@@ -1,9 +1,9 @@
 <template>
 <div>
 {{ cnt }}
+{{ cnt }}
 </div>
 <button @click="add">
-
 </button>
 </template>
 

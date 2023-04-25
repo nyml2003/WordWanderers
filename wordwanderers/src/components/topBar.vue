@@ -1,0 +1,89 @@
+<template>
+    <div class="top-bar">
+      <div class="logo">Word Wanderers</div>
+      <div class="spacer"></div>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+      </div>
+      <div class="search-box">
+        <i class="fa fa-search"></i>
+        <input type="text" placeholder="Search...">
+      </div>
+      <div class="user">
+        <i class="fa fa-user"></i>
+      </div>
+    </div>
+</template>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Style the top bar */
+  .top-bar {
+    background-color: white;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    padding: 0 20px;
+    border-bottom: 1px solid #E6E6E6;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: black;
+  }
+  
+  /* Style the logo */
+  .logo {
+    font-size: 25px;
+    font-weight: bold;
+    font-family: serif;
+  }
+
+  /* Style the navigation links */
+  .nav-links a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #555555;
+    order: 1;
+    padding-left: 20px;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+  /* Style the search box */
+  .search-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #333333;
+    border-radius: 20px;
+    padding: 5px 10px;
+    order: 2;
+  }
+  
+  .search-box input[type="text"] {
+    border: none;
+    outline: none;
+    background-color: white;
+    font-size: 14px;
+    margin-left: 10px;
+    width: 200px;
+  }
+
+  .search-box i{
+    color:#333333;
+  }
+
+  .user{
+    order:2;
+    padding: 10px;
+  }
+
+  .spacer {
+    order: 2;
+    flex-grow: 1; /* 让 spacer 元素占据剩余宽度 */
+  }
+</style>

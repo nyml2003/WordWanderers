@@ -3,7 +3,7 @@
       <div class="logo">Word Wanderers</div>
       <div class="spacer"></div>
       <div class="nav-links">
-        <router-link to="/home">Home</router-link>
+        <router-link to="/">Home</router-link>
         <router-link to="/about">About</router-link>
       </div>
       <div class="search-box">

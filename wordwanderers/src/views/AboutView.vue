@@ -2,6 +2,7 @@
   <div class="about">
     <h1>This is an about page</h1>
   </div>
+  <el-button type="primary">Primary</el-button>
   <testA></testA>
 </template>
 

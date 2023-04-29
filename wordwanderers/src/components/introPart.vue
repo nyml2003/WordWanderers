@@ -31,6 +31,6 @@
     </div>
 </template>
 
-<style >
+<style scoped>
     @import url(@/assets/css/intro.css);
 </style>

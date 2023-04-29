@@ -26,7 +26,7 @@
         <p class="i_w_black_w">尽展算法巧思</p>
       </div>
       <div class="pic-box">
-        <img class="i_img" src="@/assets/pic_2.png">
+        <img class="i_img" src="@/assets/pic-code.png">
       </div>
     </div>
 </template>

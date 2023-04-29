@@ -24,6 +24,7 @@
       // 根据 this.$route.params.blogId 获取博文数据的方法，例如发送 API 请求获取数据
       // 将获取的数据赋值给 this.blog
       const blogId = this.$route.params.blogId;
+      // 需要改这里！！！！！！！！！！！
       // 发送 API 请求或其他操作来获取博文数据
 
       // 这里只是示例，你需要根据实际情况获取博文数据并赋值给 this.blog

@@ -2,7 +2,7 @@
     <div>
       <div class="box">
         <div class="block">
-        <el-timeline>
+        <el-timeline class="custom-timeline">
           <el-timeline-item v-for="blog in blogs" :key="blog.id" :timestamp="blog.created" placement="top">
             <el-card class="box-card">
                 <template #header>
@@ -65,6 +65,10 @@
 }
 .block{
     margin:10px,80px,10px,80px;
+}
+.custom-timeline {
+  margin-left: 20px;
+  margin-right: 20px;
 }
 .el-card {
     min-width: 380px;

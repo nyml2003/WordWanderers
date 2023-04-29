@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+form {
+    background-color: #fff;
+    padding: 20px;
+    margin: 50px;
+    border-radius: 10px;
+    width: 400px;
+    /*BUG:修改此处的400px不起作用，展示出来的始终是500px*/
+    border: 2px solid rgb(193, 186, 186);
+}
+
+.login {
+    margin-top: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login input[type=text], input[type=password] {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    background-color: white;
+    border:rgb(214, 214, 214) solid;
+    font-size: 16px;
+    width: 100%;
+}
+.login_title {
+    font-size: 25px;
+    color: rgb(73, 73, 73);
+    font-family:  'San Francisco';
+    font-weight: 450;
+    text-align: center;
+    margin-bottom: 15px;
+}
+input[type="submit"] {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: rgb(150, 150, 150);
+    background-color: white;
+    border-radius: 50%; /* 将按钮变为圆形 */
+    width: 40px; /* 设置按钮宽度和高度相等 */
+    height: 40px;
+    font-size: 12px; /* 设置字体大小 */
+    border: 1.5px solid rgb(190, 190, 190);
+    transition: background-color 0.2s ease-in-out;
+  }
+  input[type="submit"]:hover{
+    background-color: rgb(190, 190, 190);
+    color: white;
+  }
+
+::placeholder {
+    font-family:  'San Francisco';
+    color: #999;
+  }
+.login_register{
+    font-family:  'San Francisco';
+    font-size: 10px;
+    color: rgb(150, 150, 150);
+    text-align: center;
+}

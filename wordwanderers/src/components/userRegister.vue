@@ -32,6 +32,6 @@
     </div>
     </template>
     
-    <style scoped>
+    <styles scoped>
        @import url(@/assets/css/register.css);
-    </style>
+    </styles>

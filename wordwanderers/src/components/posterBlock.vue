@@ -7,7 +7,7 @@
             <p class="p_w_blue">Be A Wanderer</p>
         </div>
         <div class="poster_box">
-            <a class="white" href="login.html">Login Now →</a>
+            <router-link to="/userLogin" class = 'white'>Login Now →</router-link>
         </div>
     </div>
     <div style="text-align: center;">

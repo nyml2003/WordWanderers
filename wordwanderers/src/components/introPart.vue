@@ -1,7 +1,7 @@
 <template>
      <div class="intro">
       <div class="intro_words">
-        <p class="i_w_black_t">在<span class="blue">Word Wanderers！！！</span></p>
+        <p class="i_w_black_t">在<span class="blue">Word Wanderers</span></p>
         <p class="i_w_black_w">创作你的专属博文</p>
         <p class="i_w_black_w">尽情交流 & 灵感碰撞</p>
       </div>

@@ -4,8 +4,7 @@ form {
     padding: 20px;
     margin: 50px;
     border-radius: 10px;
-    width: 400px;
-    /*BUG:修改此处的400px不起作用，展示出来的始终是500px*/
+    width: 350px;
     border: 2px solid rgb(193, 186, 186);
 }
 

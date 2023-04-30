@@ -39,6 +39,8 @@
   /* Style the search box */
   .search-box {
     display: flex;
+    width: 30%;
+    min-width: 240px;
     align-items: center;
     border: 1px solid #333333;
     border-radius: 20px;

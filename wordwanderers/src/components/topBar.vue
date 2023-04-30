@@ -17,6 +17,6 @@
     </div>
 </template>
 
-<style scoped>
+<style>
     @import url(@/assets/css/nav_bar.css);
 </style>

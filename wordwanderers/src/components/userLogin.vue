@@ -24,6 +24,5 @@
     </div>
 </template>
 
-<style scoped>
-    @import url(@/assets/css/login.css);
-</style>
+<style src="../assets/css/login.css" scoped></style>
+<style></style>

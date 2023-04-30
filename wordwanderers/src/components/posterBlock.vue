@@ -15,6 +15,6 @@
     </div>
 </template>
 
-<style scoped>
+<style>
     @import url(@/assets/css/poster.css);
 </style>

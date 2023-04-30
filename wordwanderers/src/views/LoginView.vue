@@ -8,7 +8,7 @@
   export default {
     name: 'LoginView',
     components: {
-      'user-Login':userLogin
+      userLogin
     }
   }
 </script>

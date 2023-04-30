@@ -30,8 +30,8 @@
         </div>
         </form>
     </div>
-    </template>
+</template>
     
-    <styles scoped>
-       @import url(@/assets/css/register.css);
-    </styles>
+<style>
+    @import url("@/assets/css/register.css")
+</style>

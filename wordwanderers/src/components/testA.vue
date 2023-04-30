@@ -1,10 +1,9 @@
 <template>
-<div>
+<div class="counter">
 {{ cnt }}
+<el-button type="primary" @click="add">+</el-button>
 {{ cnt }}
 </div>
-<button @click="add">
-</button>
 </template>
 
 <script setup>
@@ -14,3 +13,9 @@ const add = () => {
     cnt.value+=1;
 }
 </script>
+
+<style scoped>
+.counter{
+    margin-left: 30px;
+}
+</style>

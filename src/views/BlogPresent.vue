@@ -1,47 +1,36 @@
 <template>
   <div>
     <div class="box-card">
-      <el-card @click="$router.push({ name: 'BlogPresent', params: { blogId: blog.id } })">
+      <el-card>
         <template #header>
           <div class="card-header">
-            <h3>{{ blog.title }}{{ blog.id }}</h3>
+            <h2>{{ blog.title }}{{ blog.id }}</h2>
             <p class="author">作者：{{ blog.user }}{{ blog.id }}</p>
+            <div class="info">
+              <span><el-icon><CaretTop /></el-icon> {{ blog.likes }}</span>
+              <span><el-icon><ChatRound /></el-icon> {{ blog.comments }}</span>
+            </div>
           </div>
         </template>
-        <p style="font-size: xx-small;color:grey">{{ blog.content }}</p>
-        <div class="info">
-          
-          <span><el-icon name="thumb" style="color: red;"></el-icon> {{ blog.likes }}</span>
-          <span><el-icon><ChatRound /></el-icon> {{ blog.comments }}</span>
-        </div>
+        <p style="font-size: 20px;color:grey">{{ blog.content }}</p>
+      </el-card>
+    </div>
+    <div class="box-card">
+      <el-card>
+        <template #header>
+          <div class="card-header">
+            <h3>
+              <div class="comment">
+                <span><el-icon><ChatRound /></el-icon></span>
+                <span><el-button>我要评论</el-button></span>
+              </div>
+            </h3>
+          </div>
+        </template>
+        <p style="font-size: 20px;color:grey">{{ blog.comment }}</p>
       </el-card>
     </div>
   </div>
-  <p>
-    with extra class <b>is-loading</b>, your icon is able to rotate 360 deg in 2
-    seconds, you can also override this
-  </p>
-  <el-icon>
-    <Edit />
-  </el-icon>
-  <el-icon size="20">
-    <Edit />
-  </el-icon>
-  <el-icon color="#409EFC" class="no-inherit">
-    <Share />
-  </el-icon>
-  <el-icon>
-    <Delete />
-  </el-icon>
-  <el-icon class="is-loading">
-    <Loading />
-  </el-icon>
-  <el-button type="primary">
-    <el-icon style="vertical-align: middle">
-      <Search />
-    </el-icon>
-    <span style="vertical-align: middle"> Search </span>
-  </el-button>
 </template>
 
 <script >
@@ -54,7 +43,7 @@ export default {
   },
   mounted() {
     const blogId = this.$route.params.blogId;
-    this.blog = { id: blogId, title: '测试博文', user: '作者', content: '博文内容', likes: 10, comments: 5 };
+    this.blog = { id: blogId, title: '测试博文', user: '作者', content: '博文内容', comment:'评论' , likes: 10, comments: 5 };
   },
 };
 </script>
@@ -64,18 +53,37 @@ export default {
   margin-top: 20px;
   margin-left: 5%;
   margin-right: 5%;
+  margin-bottom: 10px;
+}
+.card-header{
+  margin-bottom: -10px;
 }
 .author {
-  font-size: x-small;
+  font-size: 20px;
   color: grey;
 }
 .info {
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 0px;
   display: flex;
-  justify-content: space-between;
+}
+.comment{
+  margin-top: -5px;
+  display: flex;
+  display: flex;
+  align-items: center; /* 设置垂直居中对齐 */
+  justify-content: space-between; /* 将子元素分别排列在容器的最左边和最右边 */
+}
+.comment span{
+  display: flex; /* 设置为 Flex 容器 */
+  justify-content: center; /* 设置水平居中对齐 */
+  align-items: center; /* 设置垂直居中对齐 */
+  margin-right: 20px;
+  color: grey;
 }
 .info span {
   font-size: small;
+  margin-right: 20px;
   color: grey;
 }
 .info span i {

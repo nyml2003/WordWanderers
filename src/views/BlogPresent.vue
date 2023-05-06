@@ -21,7 +21,10 @@
     with extra class <b>is-loading</b>, your icon is able to rotate 360 deg in 2
     seconds, you can also override this
   </p>
-  <el-icon :size="20">
+  <el-icon>
+    <Edit />
+  </el-icon>
+  <el-icon size="20">
     <Edit />
   </el-icon>
   <el-icon color="#409EFC" class="no-inherit">

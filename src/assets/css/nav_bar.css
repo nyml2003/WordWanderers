@@ -23,8 +23,9 @@
   .logo {
     font-size: 25px;
     font-weight: bold;
-    font-family: serif;
+    font-family: Garamond, serif;  
   }
+  
 
   /* Style the navigation links */
   .nav-links a {

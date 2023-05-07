@@ -5,13 +5,15 @@ import LoginView from '../views/LoginView.vue'
 import RegisterView from '@/views/RegisterView.vue'
 import BlogPreview from '../views/BlogPreview.vue'
 import BlogPresent from '../views/BlogPresent.vue'
-
+import MyPage from '../views/MyPage.vue'
 const routes = [
+  // 主界面
   {
     path: '/',
     name: 'home',
     component: HomeView
   },
+  // 关于我们界面
   {
     path: '/about',
     name: 'about',
@@ -20,16 +22,19 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   },
+  // 用户登录界面
   {
     path: '/userLogin',
     name: 'userLogin',
     component: LoginView
   },
+  // 用户注册界面
   {
     path: '/userRegister',
     name: 'userRegister',
     component: RegisterView
   },
+  // 博客预览界面
   {
     path: '/blog',
     name: 'blog',
@@ -44,6 +49,12 @@ const routes = [
     name: 'BlogPresent',
     component: BlogPresent,
     props: true
+  },
+  // 个人主页
+  {
+    path: '/MyPage',
+    name: 'MyPage',
+    component:MyPage,
   }
 ]
 

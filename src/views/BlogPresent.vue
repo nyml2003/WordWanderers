@@ -22,7 +22,7 @@
             <h3>
               <div class="comment">
                 <span><el-icon><ChatRound /></el-icon></span>
-                <span><el-button type="info" plain round>我要评论 🙋</el-button></span>
+                <span><el-button type="info" plain round>点赞 👍🏻</el-button><el-button type="info" plain round>评论 ✉️</el-button></span>
               </div>
             </h3>
           </div>

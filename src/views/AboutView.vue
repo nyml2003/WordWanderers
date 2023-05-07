@@ -8,11 +8,10 @@
 <script>
 // @ is an alias to /src
 import testA from "@/components/testA.vue"
-
 export default {
   name: 'HomeView',
   components: {
-    testA
+    testA,
   }
 }
 </script>

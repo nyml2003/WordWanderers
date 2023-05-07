@@ -7,7 +7,6 @@
             <div class="info">
                 <input type="text" id="username" name="username" placeholder="Username" required>
             </div>
-
             <div class="info">
                 <input type="password" id="password" name="password" placeholder="Password" required>
             </div>

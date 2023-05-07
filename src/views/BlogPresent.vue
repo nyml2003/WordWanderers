@@ -22,7 +22,7 @@
             <h3>
               <div class="comment">
                 <span><el-icon><ChatRound /></el-icon></span>
-                <span><el-button>我要评论</el-button></span>
+                <span><el-button type="info" plain round>我要评论 🙋</el-button></span>
               </div>
             </h3>
           </div>
@@ -68,7 +68,7 @@ export default {
   display: flex;
 }
 .comment{
-  margin-top: -5px;
+  margin-top: -10px;
   display: flex;
   display: flex;
   align-items: center; /* 设置垂直居中对齐 */
@@ -78,7 +78,6 @@ export default {
   display: flex; /* 设置为 Flex 容器 */
   justify-content: center; /* 设置水平居中对齐 */
   align-items: center; /* 设置垂直居中对齐 */
-  margin-right: 20px;
   color: grey;
 }
 .info span {

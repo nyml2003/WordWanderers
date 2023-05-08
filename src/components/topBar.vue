@@ -11,20 +11,20 @@
         <i class="fa fa-search"></i>
         <input type="text" placeholder="Search...">
       </div>
+
       <div class="user">
-        <!-- <i class="fa fa-user"></i> -->
-          <el-avatar :icon="UserFilled" size="30" />
-
-
+        <el-avatar :icon ='UserFilled' />
       </div>
+      
     </div>
 </template>
 
 
-<script setup>
-  //import ElAvatar from 'element-plus';
-  import { UserFilled } from '@element-plus/icons-vue'
+<script>
+import  UserFilled  from '@element-plus/icons-vue'
+
 </script>
+
 
 <style>
     @import url(@/assets/css/nav_bar.css);

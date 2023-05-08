@@ -24,4 +24,3 @@
 </template>
 
 <style src="../assets/css/login.css" scoped></style>
-<style></style>

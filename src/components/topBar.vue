@@ -13,7 +13,7 @@
       </div>
       <div class="user">
         <!-- <i class="fa fa-user"></i> -->
-          <el-avatar :icon="UserFilled" />
+          <el-avatar :icon="UserFilled" size="30" />
 
 
       </div>

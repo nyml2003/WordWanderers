@@ -12,10 +12,19 @@
         <input type="text" placeholder="Search...">
       </div>
       <div class="user">
-        <i class="fa fa-user"></i>
+        <!-- <i class="fa fa-user"></i> -->
+        <div class="block">
+          <el-avatar :size="50" :src="circleUrl" />
+        </div>
+
       </div>
     </div>
 </template>
+
+
+<script setup>
+  import ElAvatar from 'element-plus';
+</script>
 
 <style>
     @import url(@/assets/css/nav_bar.css);

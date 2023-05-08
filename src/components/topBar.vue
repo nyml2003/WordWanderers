@@ -13,9 +13,8 @@
       </div>
       <div class="user">
         <!-- <i class="fa fa-user"></i> -->
-        <div class="block">
-          <el-avatar :size="50" :src="circleUrl" />
-        </div>
+          <el-avatar :icon="UserFilled" />
+
 
       </div>
     </div>
@@ -23,7 +22,8 @@
 
 
 <script setup>
-  import ElAvatar from 'element-plus';
+  //import ElAvatar from 'element-plus';
+  import { UserFilled } from '@element-plus/icons-vue'
 </script>
 
 <style>

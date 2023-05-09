@@ -3,9 +3,9 @@
       <div class="box">
         <div class="block">
         <el-timeline>
-          <el-timeline-item v-for="blog in blogs" :key="blog.id" :timestamp="blog.created" placement="top" >
+          <el-timeline-item v-for="(blog,id) in blogs" :key="blog" :index="id" :timestamp="blog.created" placement="top" >
             <!--点击标题，则传回当前博文的blog参数 并要求执行selectBlog函数-->
-            <el-card class="box-card"  @click="$router.push({ name: 'BlogPresent', params: { blogId: blog.id } })">
+            <el-card class="box-card"  @click="$router.push({ name: 'BlogPresent', params: { blog:blog } })">
                 <template #header>
                 <div class="card-header">
                     <h3>{{ blog.title }}</h3>
@@ -23,21 +23,13 @@
   
   <script setup>
   import { ElTimeline, ElTimelineItem, ElCard } from 'element-plus';
-  import { ref } from 'vue';
-  import axios from 'axios';
-  const apiClient = axios.create({
-    baseURL: "http://8.130.84.162:114/api",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-  });
+  import { ref,onMounted } from 'vue';
+  import DataService from '@/components/services/DataService';
   const blogs=ref([]);
-  const getAllData=async () => {
-    const response  =await apiClient.get('/data');
-    blogs.value=response.data.content;
-  };
-  getAllData();
+  onMounted( async () => {
+    const response = await DataService.Select_All_Blogs();
+    blogs.value=response.data;
+  });
 </script>
 
 <style scoped>

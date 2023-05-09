@@ -33,19 +33,12 @@
   </div>
 </template>
 
-<script >
-export default {
-  name: 'BlogPresent',
-  data() {
-    return {
-      blog: {},
-    };
-  },
-  mounted() {
-    const blogId = this.$route.params.blogId;
-    this.blog = { id: blogId, title: '测试博文', user: '作者', content: '博文内容', comment:'评论' , likes: 10, comments: 5 };
-  },
-};
+<script setup>
+import { onMounted,ref } from 'vue';
+const blog = ref({});
+  onMounted( async () => {
+    blog.value= this.$route.params.blog;
+  });
 </script>
 
 <style scoped>

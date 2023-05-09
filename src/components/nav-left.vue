@@ -33,25 +33,38 @@
   </script>
 
 <style>
+.func {
+  height: 20px;
+  padding: 0px;
+  margin:0px;
+  text-align:start;
+}
+.func .p{
+  text-size-adjust: auto;
+}
 .el-menu {
     border: none !important;
 }
 .el-aside {
-  background-color: rgb(32,33,35);
+  border-right: 2px solid #E6E6E6;
+  padding-top: 20px;
+  background-color: white;
   color: #333;
   text-align: center;
   line-height: 200px;
-  height: 100%;
+  height: 90%;
 }
-.nav-l {
-    background-color: rgb(32,33,35);
-}
+
 .nav-l .el-menu-item{
-    background-color: rgb(32,33,35);
-    color: white;
+    background-color: white;
+    color: gray;
+    border-radius: 10px;
+    padding-left: 27px !important;
+    font-size: 16px;
 }
 .nav-l .el-menu-item:hover{
-    background-color: rgb(1,158,213);
-    color: white;
+    border: none;
+    color: black;
+    background-color: #E6E6E6;
 }
 </style>

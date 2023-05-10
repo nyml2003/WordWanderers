@@ -1,11 +1,12 @@
 <template>
   <el-container>
-    <el-aside width="160px">
+    <el-aside>
         <!--左侧导航栏-->
-        <navleft/>
-    </el-aside>
+        <navleft @writeBlog="changeToWriteBlog" @personalInfo="changeToPersonalInfo" @myHome="changeToMyHome"></navleft>
+    </el-aside >
     <el-main>
-      <writeBlog></writeBlog>
+      <writeBlog v-if="pos==1"></writeBlog>
+      <personalInfo v-if="pos==2"></personalInfo>
     </el-main>
   </el-container>
 </template>
@@ -13,12 +14,30 @@
 <script>
 import navleft from "@/components/nav-left.vue"
 import writeBlog from "@/components/writeBlog.vue"
+import personalInfo from "@/components/personalInfo.vue"
 export default {
-    name: 'MyPage',
-    components: {
+  name: 'MyPage',
+  data() {
+    return {
+      pos:2,
+    };
+  },
+  components: {
       navleft,
-      writeBlog
+      writeBlog,
+      personalInfo,
+  },
+  methods: {
+    changeToWriteBlog() {
+      this.pos = 1;
+    },
+    changeToPersonalInfo() {
+      this.pos = 2;
+    },
+    changeToMyHome() {
+      this.pos = 3;
     }
+  },
   }
 </script>
 

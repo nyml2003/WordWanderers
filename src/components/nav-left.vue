@@ -1,18 +1,18 @@
 <template>
     <el-menu>
             <el-submenu class="nav-l">
-                <el-menu-item >
-                    <el-icon><Edit /></el-icon>
-                    <span>写博客</span>
-                </el-menu-item>
-                <el-menu-item>
-                    <el-icon><UserFilled /></el-icon>
-                    <span>个人信息</span>
-                </el-menu-item>
-                <el-menu-item>
-                    <el-icon><View /></el-icon>
-                    <span>我的主页</span>
-                </el-menu-item>
+              <el-menu-item @click="$emit('WriteBlog')">
+                <el-icon><Edit /></el-icon>
+                <span>写博客</span>
+              </el-menu-item>
+              <el-menu-item @click="$emit('PersonalInfo')">
+                <el-icon><UserFilled /></el-icon>
+                <span>个人信息</span>
+              </el-menu-item>
+              <el-menu-item @click="$emit('MyHome')">
+                <el-icon><View /></el-icon>
+                <span>我的主页</span>
+              </el-menu-item>
             </el-submenu>
     </el-menu>
   </template>

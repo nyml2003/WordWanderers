@@ -53,6 +53,7 @@
   text-align: center;
   line-height: 200px;
   height: 90%;
+  width: 160px !important;
 }
 
 .nav-l .el-menu-item{

@@ -1,14 +1,42 @@
 <template>
     <el-row class="info">
         <el-avatar :size="50">{{ username.substring(0,3) }}</el-avatar>
-        <p>{{ username }}</p>
+        <p>欢迎您：{{ username }}</p>
     </el-row>
-    <e-row class="detail">
-        <p>发表博客数: {{ blognum }}</p>
-    </e-row>
+    <el-row class="detail">
+        <div class="show_detail" @click="showBlogNum">
+            <div class="icon"><el-icon size="40"><ChatRound /></el-icon></div>
+            <div class="text">
+                <span class="line1">发表博客</span>
+                <span class="line2">{{ blognum }}</span>
+            </div>
+        </div>
+        <div class="show_detail" @click="showLike">
+            <div class="icon"><el-icon size="40"><Pointer /></el-icon></div>
+            <div class="text">
+                <span class="line1">收获点赞</span>
+                <span class="line2">{{ blognum }}</span>
+            </div>
+        </div>
+        <div class="show_detail" @click="showComment">
+            <div class="icon"><el-icon size="40"><Message /></el-icon></div>
+            <div class="text">
+                <span class="line1">收获评论</span>
+                <span class="line2">{{ blognum }}</span>
+            </div>
+        </div>
+        <div class="show_detail" style="border-right: none;" @click="showView">
+            <div class="icon"><el-icon size="40"><View /></el-icon></div>
+            <div class="text">
+                <span class="line1">总浏览量</span>
+                <span class="line2">{{ blognum }}</span>
+            </div>
+        </div>
+    </el-row>
 </template>
 
 <script>
+import { ElMessage } from 'element-plus';
 export default {
     data() {
     return {
@@ -17,12 +45,53 @@ export default {
     };
     },
     methods: {
-        
+        showBlogNum() {
+            ElMessage('当前发表博客数：'+this.blognum)
+        },
+        showLike() {
+            ElMessage('当前收获点赞数：'+this.blognum)
+        },
+        showComment() {
+            ElMessage('当前收获评论数：'+this.blognum)
+        },
+        showView() {
+            ElMessage('当前浏览总数：'+this.blognum)
+        }
     },
 };
 </script>
 
 <style scoped>
+.detail {
+    background-color: rgb(62, 147, 232);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+.icon {
+    margin-right: 10px;
+}
+.show_detail {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    padding-right: 30px;
+    padding-left: 30px;
+    border-right: 2px solid white;
+}
+.icon {
+    color: white;
+}
+.text {
+    color: white;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-weight: 220;
+    font-size: 16px;
+}
 .info {
     display: flex;
     align-items: center;
@@ -35,11 +104,10 @@ export default {
     font-size: 17px;
     font-weight: 190;
 }
-.detail {
-    font-size: 17px;
-}
+
 .detail p{
     margin-left: 68px;
+    margin-bottom: 20px;
     font-weight: 190;
 }
 

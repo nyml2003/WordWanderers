@@ -1,26 +1,29 @@
 <template>
     <div class="blog-editor">
       <el-form ref="form" :model="blog" label-width="40px">
+
         <el-form-item label="标题">
           <el-input v-model="blog.title"></el-input>
         </el-form-item>
+
         <el-form-item label="内容">
-          <textEditor ref="editor" v-model="blog.content"></textEditor>
+          <mdtextEditor ref="editor" v-model="blog.content"></mdtextEditor>
         </el-form-item>
-        <el-form-item>
+
+        <el-form-item style="margin-left: 44%;">
           <el-button type="primary" @click="submitBlog">发布</el-button>
         </el-form-item>
+
       </el-form>
     </div>
   </template>
   
-  <script>
-  import textEditor from "@/components/textEditor.vue";
-  
+<script>
+  import mdtextEditor from './mdtextEditor.vue';
   export default {
     name: "BlogEditor",
     components: {
-      textEditor,
+      mdtextEditor,
     },
     data() {
       return {
@@ -39,7 +42,8 @@
       },
     },
   };
-  </script>
+
+</script>
   
   <style scoped>
   .blog-editor {

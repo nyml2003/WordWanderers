@@ -46,6 +46,6 @@ export default {
     height: 100vh;
 }
 .el-main {
-  width:90%;
+  width:75%;
 }
 </style>

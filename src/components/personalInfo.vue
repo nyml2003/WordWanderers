@@ -1,7 +1,12 @@
 <template>
     <el-row class="info">
-        <el-avatar :size="50">{{ username.substring(0,3) }}</el-avatar>
-        <p>欢迎您：{{ username }}</p>
+        <el-avatar :size="50">{{ username.substring(0,2) }}</el-avatar>
+        <p>{{ username }}</p>
+    <div class="button-wrapper">
+        <el-button type="primary"><el-icon><Edit /></el-icon></el-button>
+    </div>
+    </el-row>
+    <el-row class="info2">
     </el-row>
     <el-row class="detail">
         <div class="show_detail" @click="showBlogNum">
@@ -63,21 +68,29 @@ export default {
 
 <style scoped>
 .detail {
-    background-color: rgb(62, 147, 232);
-    border-radius: 10px;
+    background-image: linear-gradient(to right, #5d9cec, #8eb5f3);
+    border-radius: 30px;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 .icon {
     margin-right: 10px;
 }
+.button-wrapper {
+  margin-left: auto;
+}
+
+.info2 {
+    height: 60vh;
+}
 .show_detail {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     display: flex;
     align-items: center;
-    padding-right: 30px;
-    padding-left: 30px;
+    padding-right: 50px;
+    padding-left: 50px;
     border-right: 2px solid white;
 }
 .icon {
@@ -98,6 +111,7 @@ export default {
     margin-bottom: 20px;
     border-bottom: 3px solid #E6E6E6;
     padding-bottom: 10px;
+    justify-content: space-between;
 }
 .info p {
     margin-left: 20px;

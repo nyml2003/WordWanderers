@@ -1,6 +1,6 @@
 <template>
   <div class="block text-center">
-    <el-carousel height="100vh" >
+    <el-carousel height="90vh" >
       <el-carousel-item class="show" v-for="item in this.poster" :key="item">
         <h1 class="small justify-center" text="2xl">{{ item.job }}</h1>
         <h2 class="small justify-center" text="2xl">By: {{ item.name }}</h2>
@@ -55,7 +55,7 @@ export default {
 }
 
 .el-carousel__item:nth-child(3n) {
-  background-color: rgb(18, 156, 220);
+  background-color: rgb(45, 151, 200);
 }
 
 .el-carousel__item:nth-child(3n + 1) {

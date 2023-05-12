@@ -31,7 +31,8 @@ export default {
       if (this.isLoggedin) {
         this.$router.push({ name: 'homepage' });//若登录成功，点击头像则会跳到个人界面
       } else {
-        this.$router.push({ name: 'userLogin' });
+        this.$router.push({ name: 'blog' });
+        //this.$router.push({ name: 'userLogin' });
       }
 
     },

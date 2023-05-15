@@ -39,7 +39,7 @@ export default {
     handleLogin() {
       // 登录成功后将用户名存储在this.username中
       // 并设置isLoggedin为true
-      this.username = '？？';
+      this.username = '??';
       this.isLoggedin = true;
     },
   },

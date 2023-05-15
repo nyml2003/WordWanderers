@@ -4,7 +4,7 @@ import axios from 'axios';
 // 创建一个 axios 实例，用于发送请求
 const apiClient = axios.create({
   // 设置后端 API 的基础 URL
-  baseURL: "http://8.130.84.162:114/api",
+  baseURL: "http://8.130.84.162:8180/api",
   // 设置请求头
   headers: {
     Accept: "application/json",
@@ -22,5 +22,8 @@ export default {
   },
   isInputRight(name,password){
     return apiClient.post('/Login_Judge',{name,password});
-  }
+  },
+  SelectBlog(id){
+    return apiClient.post('/SB',{id:id});
+  },
 };

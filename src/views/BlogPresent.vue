@@ -5,16 +5,16 @@
         <template #header>
           <div class="card-header">
             <h2>{{ blog.title }}{{ blog.id }}</h2>
-            <p class="author">作者：{{ blog.user }}{{ blog.id }}</p>
+            <p class="author">作者：{{ blog.user_name }}{{ blog.id }}</p>
             <div class="info">
-              <span><el-icon><CaretTop /></el-icon> {{ blog.likes }}</span>
-              <span><el-icon><ChatRound /></el-icon> {{ blog.comments }}</span>
+              <span><el-icon><CaretTop /></el-icon> {{ blog.like }}</span>
+              <span><el-icon><ChatRound /></el-icon> {{ blog.comment }}</span>
             </div>
           </div>
         </template>
         <p style="font-size: 20px;color:grey">{{ blog.content }}</p>
       </el-card>
-    </div>
+    </div> 
     <div class="box-card">
       <el-card>
         <template #header>
@@ -27,17 +27,24 @@
             </h3>
           </div>
         </template>
-        <p style="font-size: 20px;color:grey">{{ blog.comment }}</p>
+          <div v-for="(comment,id) in blog.comments" :key="id">{{ comment }}</div>
       </el-card>
     </div>
   </div>
 </template>
 
 <script setup>
-import { onMounted,ref } from 'vue';
-const blog = ref({});
-  onMounted( async () => {
-    blog.value= this.$route.params.blog;
+import { ref } from 'vue';
+import { useRoute } from 'vue-router'
+import DataService from '@/components/services/DataService'
+import { onMounted } from 'vue';
+const route=useRoute()
+const blogId = ref(route.params.blogId);
+const blog=ref(0)
+
+onMounted( async () => {
+    const response = await DataService.SelectBlog(blogId.value);
+    blog.value=response.data;
   });
 </script>
 

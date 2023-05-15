@@ -48,7 +48,6 @@ const routes = [
     path: '/blog/:blogId',
     name: 'BlogPresent',
     component: BlogPresent,
-    props: true
   },
   // 个人主页
   {

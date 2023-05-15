@@ -4,7 +4,6 @@
         <div class="block">
         <el-timeline>
           <el-timeline-item v-for="(blog,id) in blogs" :key="blog.id" :index="id" :timestamp="blog.created_time" placement="top" >
-            <div>{{ blog }}</div>
             <!--点击标题，则传回当前博文的blog参数 并要求执行selectBlog函数-->
             <el-card class="box-card"  @click="this.$router.push({name:'BlogPresent',params: {blogId:blog.id}})">
                 <template #header>

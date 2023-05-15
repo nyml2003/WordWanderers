@@ -25,11 +25,11 @@
                 <span>
                   <el-button v-if="isActive"  text round @click="toggleActive" style="background-color: rgb(90,156,248);color:white;width:55px">
                     <el-icon style="font-size:20px;color: white;"><CaretTop /></el-icon>
-                    {{ blog.likes }}
+                    {{ blog.like }}
                   </el-button>
                   <el-button v-else text round @click="toggleActive" style="border: 1.5px solid rgb(203, 201, 201);color: rgb(165, 162, 162);width:55px">
                     <el-icon style="font-size:20px;color: rgb(165, 162, 162);"><CaretTop /></el-icon>
-                    {{ blog.likes }}
+                    {{ blog.like }}
                   </el-button>
                   <el-button text round style="border: 1.5px solid rgb(203, 201, 201);color: rgb(165, 162, 162);width:55px" @click="dialogVisible = true">
                     评论 </el-button>
@@ -66,7 +66,7 @@ import DataService from '@/components/services/DataService'
 import { onMounted } from 'vue';
 const route=useRoute()
 const blogId = ref(route.params.blogId);
-const blog=ref(0)
+const blog=ref({})
 const isActive = ref(false);
 const dialogVisible = ref(false)
 onMounted( async () => {
@@ -78,15 +78,15 @@ onMounted( async () => {
 const toggleActive = () => {
   if (isActive.value === true) {
     isActive.value = false;
-    blog.value.likes -= 1;
+    blog.value.like -= 1;
   }
   else {
     isActive.value = true;
-    blog.value.likes += 1;
+    blog.value.like += 1;
   }
 };
 
-blog.value.likes = 100;
+blog.value.like = 100;
 
 
 </script>

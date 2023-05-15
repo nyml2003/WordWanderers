@@ -2,8 +2,11 @@
   <div class="block text-center">
     <el-carousel height="90vh" >
       <el-carousel-item class="show" v-for="item in this.poster" :key="item">
-        <h1 class="small justify-center" text="2xl">{{ item.job }}</h1>
-        <h2 class="small justify-center" text="2xl">By: {{ item.name }}</h2>
+        <div>
+          <h1 class="small justify-center" text="2xl">{{ item.job }}</h1>
+          <h2 class="small justify-center" text="2xl">By: {{ item.name }}</h2>
+          <!-- <img class="i_img" src="@/assets/about_pic.png"> -->
+        </div>
       </el-carousel-item>
     </el-carousel>
   </div>
@@ -55,13 +58,13 @@ export default {
 }
 
 .el-carousel__item:nth-child(3n) {
-  background-color: rgb(45, 151, 200);
+  background-color: black;
 }
 
 .el-carousel__item:nth-child(3n + 1) {
-  background-color: rgb(195, 138, 149);
+  background-color: black;
 }
 .el-carousel__item:nth-child(3n + 2) {
-  background-color: RGB(131, 175, 155);
+  background-color: black;
 }
 </style>

@@ -11,7 +11,7 @@
         </el-form-item>
 
         <el-form-item style="margin-left: 44%;">
-          <el-button type="primary" @click="submitBlog">发布</el-button>
+          <el-button type="primary" round @click="submitBlog">发布</el-button>
         </el-form-item>
 
       </el-form>

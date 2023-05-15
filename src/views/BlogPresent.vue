@@ -22,7 +22,18 @@
             <h3>
               <div class="comment">
                 <span><el-icon><ChatRound /></el-icon></span>
-                <span><el-button type="info" plain round>点赞 👍🏻</el-button><el-button type="info" plain round>评论 ✉️</el-button></span>
+                <span>
+                  <el-button v-if="isActive"  text round @click="toggleActive" style="background-color: rgb(90,156,248);color:white;width:55px">
+                    <el-icon style="font-size:20px;color: white;"><CaretTop /></el-icon>
+                    {{ blog.likes }}
+                  </el-button>
+                  <el-button v-else text round @click="toggleActive" style="border: 1.5px solid rgb(203, 201, 201);color: rgb(165, 162, 162);width:55px">
+                    <el-icon style="font-size:20px;color: rgb(165, 162, 162);"><CaretTop /></el-icon>
+                    {{ blog.likes }}
+                  </el-button>
+                  <el-button text round style="border: 1.5px solid rgb(203, 201, 201);color: rgb(165, 162, 162);width:55px" @click="dialogVisible = true">
+                    评论 </el-button>
+                </span>
               </div>
             </h3>
           </div>
@@ -31,17 +42,57 @@
       </el-card>
     </div>
   </div>
+
+  <el-dialog
+    v-model="dialogVisible"
+    title="评论"
+    width="60%">
+    <span>快来留下你想说的话！</span>
+    <template #footer>
+      <span class="dialog-footer">
+        <el-button @click="dialogVisible = false">取消</el-button>
+        <el-button type="primary" @click="dialogVisible = false">
+          提交
+        </el-button>
+      </span>
+    </template>
+  </el-dialog>
 </template>
 
 <script setup>
 import { onMounted,ref } from 'vue';
 const blog = ref({});
-  onMounted( async () => {
-    blog.value= this.$route.params.blog;
-  });
+const isActive = ref(false);
+const dialogVisible = ref(false)
+
+onMounted( async () => {
+  blog.value= this.$route.params.blog;
+});
+const toggleActive = () => {
+  if (isActive.value === true) {
+    isActive.value = false;
+    blog.value.likes -= 1;
+  }
+  else {
+    isActive.value = true;
+    blog.value.likes += 1;
+  }
+};
+
+blog.value.likes = 100;
+
 </script>
 
 <style scoped>
+.normal {
+  background-color: #f0f0f0;
+  font-size:5px;
+}
+.active {
+  background-color: dodgerblue; /* 选中时的背景颜色 */
+  color: white; /* 选中时的文字颜色 */
+}
+
 .box-card {
   margin-top: 20px;
   margin-left: 5%;
@@ -78,6 +129,7 @@ const blog = ref({});
   margin-right: 20px;
   color: grey;
 }
+
 .info span i {
   margin-right: 5px;
 }

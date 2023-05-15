@@ -3,7 +3,7 @@
         <el-avatar :size="50">{{ username.substring(0,2) }}</el-avatar>
         <p>{{ username }}</p>
     <div class="button-wrapper">
-        <el-button type="primary"><el-icon><Edit /></el-icon></el-button>
+        <el-button type="primary" round @click="dialogVisible = true"><el-icon><Edit /></el-icon></el-button>
     </div>
     </el-row>
     <el-row class="info2">
@@ -38,6 +38,18 @@
             </div>
         </div>
     </el-row>
+
+    <el-dialog v-model="dialogVisible" title="修改信息" width="50%">
+    <span>修改信息</span>
+    <template #footer>
+      <span class="dialog-footer">
+        <el-button @click="dialogVisible = false">取消</el-button>
+        <el-button type="primary" @click="dialogVisible = false">
+          提交
+        </el-button>
+      </span>
+    </template>
+  </el-dialog>
 </template>
 
 <script>
@@ -47,6 +59,7 @@ export default {
     return {
         username: '测试用户',
         blognum: '101',
+        dialogVisible:false,
     };
     },
     methods: {

@@ -1,18 +1,25 @@
 <template>
-  <div>
+  <div class="page">
     <div class="box-card">
       <el-card>
         <template #header>
           <div class="card-header">
-            <h2>{{ blog.title }}{{ blog.id }}</h2>
-            <p class="author">作者：{{ blog.user_name }}{{ blog.id }}</p>
-            <div class="info">
-              <span><el-icon><CaretTop /></el-icon> {{ blog.like }}</span>
-              <span><el-icon><ChatRound /></el-icon> {{ blog.comment }}</span>
+            <div class="card-header1">
+              <div>
+                <h2>{{ blog.title }}{{ blog.id}}</h2>
+                <p class="author" style="margin-top: 10px;">
+                <el-avatar :size="30">{{ blog.user_name }}</el-avatar>
+                {{ blog.user_name }}{{ blog.id }}
+                </p>
+              </div>
+              <div class="info">
+                <span><el-icon><CaretTop /></el-icon> {{ blog.like }}</span>
+                <span><el-icon><ChatRound /></el-icon> {{ blog.comment }}</span>
+              </div>
             </div>
           </div>
         </template>
-        <p style="font-size: 20px;color:grey">{{ blog.content }}</p>
+        <v-md-editor :model-value="blog.content" mode="preview"></v-md-editor>
       </el-card>
     </div> 
     <div class="box-card">
@@ -92,16 +99,16 @@ blog.value.like = 100;
 </script>
 
 <style scoped>
-.normal {
-  background-color: #f0f0f0;
-  font-size:5px;
-}
-.active {
-  background-color: dodgerblue; /* 选中时的背景颜色 */
-  color: white; /* 选中时的文字颜色 */
+.page {
+  display: flex;
+  flex-direction: column; /* 设置为竖排 */
+  justify-content:center;/* 在垂直方向上居中对齐 */
+  align-items: center; /* 在水平方向上居中对齐 */
 }
 
 .box-card {
+  max-width: 900px;
+  width:90%;
   margin-top: 20px;
   margin-left: 5%;
   margin-right: 5%;
@@ -109,6 +116,11 @@ blog.value.like = 100;
 }
 .card-header{
   margin-bottom: -10px;
+}
+.card-header1{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .author {
   font-size: 20px;

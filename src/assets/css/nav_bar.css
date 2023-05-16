@@ -21,9 +21,8 @@
   
   /* Style the logo */
   .logo {
-    font-size: 25px;
-    font-weight: bold;
-    font-family: Garamond, serif;  
+    width: 200px;
+    height:auto
   }
   
 

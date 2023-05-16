@@ -6,8 +6,12 @@
         <el-button type="primary" round @click="dialogVisible = true"><el-icon><Edit /></el-icon></el-button>
     </div>
     </el-row>
-    <el-row class="info2">
-    </el-row>
+    <div class="info2">
+        <el-row class="info3">用户id：{{ id }}</el-row>
+        <el-row class="info3">电子邮箱：{{ email }}</el-row>
+        <el-row class="info3">电话：{{ phone }}</el-row>
+        <el-row class="info3">注册时间：{{ time }}</el-row>
+    </div>
     <el-row class="detail">
         <div class="show_detail" @click="showBlogNum">
             <div class="icon"><el-icon size="40"><ChatRound /></el-icon></div>
@@ -59,7 +63,11 @@ export default {
     return {
         username: '测试用户',
         blognum: '101',
-        dialogVisible:false,
+        dialogVisible: false,
+        email: '12315999@qq.com',
+        id: 10010,
+        phone: 18900033021,
+        time: '2021-03-08',
     };
     },
     methods: {
@@ -95,8 +103,15 @@ export default {
 }
 
 .info2 {
+    margin-left: 70px;
     height: 60vh;
+    font-size: 16px;
+    font-weight: 190;
 }
+.info3 {
+    margin-bottom: 30px;
+}
+
 .show_detail {
     margin-top: 15px;
     margin-bottom: 15px;

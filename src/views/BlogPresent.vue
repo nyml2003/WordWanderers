@@ -45,7 +45,20 @@
             </h3>
           </div>
         </template>
-          <div v-for="(comment,id) in blog.comments" :key="id">{{ comment }}</div>
+        <div class="infinite-list-wrapper" style="overflow: auto">
+          <ul
+            v-infinite-scroll="load"
+            class="list" 
+            :infinite-scroll-disabled="disabled"
+          >
+
+          <div v-for="(comment,id) in blog.comments" :key="id">
+            <blogComment :message="comment"></blogComment>
+          </div>
+          </ul>
+          <p v-if="loading">Loading...</p>
+          <p v-if="noMore">No more</p>
+        </div>
       </el-card>
     </div>
   </div>
@@ -67,15 +80,28 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { useRoute } from 'vue-router'
 import DataService from '@/components/services/DataService'
+import blogComment from '@/components/blogComment.vue'
 import { onMounted } from 'vue';
 const route=useRoute()
 const blogId = ref(route.params.blogId);
 const blog=ref({})
 const isActive = ref(false);
 const dialogVisible = ref(false)
+const count = ref(10)
+const loading = ref(false)
+const noMore = computed(() => count.value >= 20)
+const disabled = computed(() => loading.value || noMore.value)
+const load = () => {
+  loading.value = true
+  setTimeout(() => {
+    count.value += 2
+    loading.value = false
+  }, 2000)
+}
+
 onMounted( async () => {
     const response = await DataService.SelectBlog(blogId.value);
     blog.value=response.data;
@@ -152,5 +178,27 @@ blog.value.like = 100;
 
 .info span i {
   margin-right: 5px;
+}
+
+.infinite-list-wrapper {
+  height: 300px;
+  text-align: center;
+}
+.infinite-list-wrapper .list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.infinite-list-wrapper .list-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  background: var(--el-color-primary-light-9);
+  color: black;
+}
+.infinite-list-wrapper .list-item + .list-item {
+  margin-top: 10px;
 }
 </style>

@@ -1,6 +1,8 @@
 <template>
     <div class="top-bar">
-      <div class="logo">Word Wanderers</div>
+      <div>
+        <img class="logo" src="@/assets/logo.png">
+      </div>
       <div class="spacer"></div>
       <div class="nav-links">
         <router-link to="/">Home</router-link>

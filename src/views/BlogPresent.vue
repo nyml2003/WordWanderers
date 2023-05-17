@@ -97,17 +97,32 @@ const loading = ref(false)
 const noMore = computed(() => count.value >= 20)
 const disabled = computed(() => loading.value || noMore.value)
 const newComment = ref('')
+
+//评论功能
 const submitComment = () => {
   //把内容存储到后端，下面这句用于测试 逻辑写好后请删除
   console.log('已经提交评论:', newComment.value);
 
-  
+
   //请只改这上面
   //清空评论内容(防止下次点开时会有)
   newComment.value = '';
   //关闭对话框
   dialogVisible.value = false;
 }
+//点赞功能
+const toggleActive = () => {
+  if (isActive.value === true) {
+    //点赞数+1，请同步到后端
+    isActive.value = false;
+    blog.value.like -= 1;
+  }
+  else {
+    //点赞数-1，请同步到后端
+    isActive.value = true;
+    blog.value.like += 1;
+  }
+};
 const load = () => {
   loading.value = true
   setTimeout(() => {
@@ -121,17 +136,6 @@ onMounted( async () => {
     blog.value=response.data;
   });
 
-
-const toggleActive = () => {
-  if (isActive.value === true) {
-    isActive.value = false;
-    blog.value.like -= 1;
-  }
-  else {
-    isActive.value = true;
-    blog.value.like += 1;
-  }
-};
 
 blog.value.like = 100;
 

@@ -67,11 +67,13 @@
     v-model="dialogVisible"
     title="评论"
     width="60%">
-    <span>快来留下你想说的话！</span>
+    <el-input v-model="newComment" type="textarea" 
+    :autosize="{minRows:5,maxRows:8}"
+    placeholder="快来给我留言吧！"></el-input>
     <template #footer>
       <span class="dialog-footer">
         <el-button @click="dialogVisible = false">取消</el-button>
-        <el-button type="primary" @click="dialogVisible = false">
+        <el-button type="primary" @click="submitComment">
           提交
         </el-button>
       </span>
@@ -86,14 +88,26 @@ import DataService from '@/components/services/DataService'
 import blogComment from '@/components/blogComment.vue'
 import { onMounted } from 'vue';
 const route=useRoute()
-const blogId = ref(route.params.blogId);
+const blogId = ref(route.params.blogId)
 const blog=ref({})
-const isActive = ref(false);
+const isActive = ref(false)
 const dialogVisible = ref(false)
 const count = ref(10)
 const loading = ref(false)
 const noMore = computed(() => count.value >= 20)
 const disabled = computed(() => loading.value || noMore.value)
+const newComment = ref('')
+const submitComment = () => {
+  //把内容存储到后端，下面这句用于测试 逻辑写好后请删除
+  console.log('已经提交评论:', newComment.value);
+
+  
+  //请只改这上面
+  //清空评论内容(防止下次点开时会有)
+  newComment.value = '';
+  //关闭对话框
+  dialogVisible.value = false;
+}
 const load = () => {
   loading.value = true
   setTimeout(() => {

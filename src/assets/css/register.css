@@ -16,7 +16,8 @@ form {
   margin-bottom: 15px;
 }
 .register {
-    margin-top: 60px;
+    margin-top: 8vh;
+    margin-bottom: 8vh;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -13,8 +13,9 @@
                 </p>
               </div>
               <div class="info">
-                <span><el-icon><CaretTop /></el-icon> {{ blog.like }}</span>
-                <span><el-icon><ChatRound /></el-icon> {{ blog.comment }}</span>
+                  <span><el-icon><ArrowUpBold /></el-icon>  {{ blog.like }}</span>
+                  <span><el-icon><ChatRound /></el-icon>  {{ blog.comment }}</span>
+                  <span style="border: none;"><el-icon><View /></el-icon>  {{ blog.view }}</span>
               </div>
             </div>
           </div>
@@ -66,9 +67,9 @@
   <el-dialog
     v-model="dialogVisible"
     title="评论"
-    width="60%">
+    width="40%">
     <el-input v-model="newComment" type="textarea" 
-    :autosize="{minRows:5,maxRows:8}"
+    :autosize="{minRows:7,maxRows:10}"
     placeholder="快来给我留言吧！"></el-input>
     <template #footer>
       <span class="dialog-footer">
@@ -171,9 +172,12 @@ blog.value.like = 100;
   color: grey;
 }
 .info {
-  margin-top: 10px;
+  margin-top: 0px;
   margin-bottom: 0px;
   display: flex;
+  flex-direction: column;
+  align-items:end;
+  min-width:50px;
 }
 .comment{
   margin-top: -10px;
@@ -190,12 +194,14 @@ blog.value.like = 100;
 }
 .info span {
   font-size: small;
-  margin-right: 20px;
+  margin-right: 10px;
+  margin-bottom: 5px;
   color: grey;
+  border-bottom: 2px solid gainsboro;
 }
 
 .info span i {
-  margin-right: 5px;
+  margin-top: 5px;
 }
 
 .infinite-list-wrapper {

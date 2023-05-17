@@ -7,10 +7,10 @@
     </div>
     </el-row>
     <div class="info2">
-        <el-row class="info3">用户id：{{ id }}</el-row>
-        <el-row class="info3">电子邮箱：{{ email }}</el-row>
-        <el-row class="info3">电话：{{ phone }}</el-row>
-        <el-row class="info3">注册时间：{{ time }}</el-row>
+        <el-row class="info3"><el-icon size="25" style="margin-right: 15px;"><PriceTag /></el-icon>{{ id }}</el-row>
+        <el-row class="info3"><el-icon size="25" style="margin-right: 15px;"><Message /></el-icon>{{ email }}</el-row>
+        <el-row class="info3"><el-icon size="25" style="margin-right: 15px;"><Iphone /></el-icon>{{ phone }}</el-row>
+        <el-row class="info3" style="border: none;"><el-icon size="25" style="margin-right: 15px;"><Timer /></el-icon>{{ time }}</el-row>
     </div>
     <el-row class="detail">
         <div class="show_detail" @click="showBlogNum">
@@ -43,8 +43,27 @@
         </div>
     </el-row>
 
-    <el-dialog v-model="dialogVisible" title="修改信息" width="50%">
-    <span>修改信息</span>
+    <el-dialog v-model="dialogVisible" title="修改信息" width="500px">
+    <el-row class="row">
+        <el-col :span="5"><p style="font-size: 16px;"><el-icon size="20"><PriceTag /></el-icon></p></el-col>
+        <el-col :span="15"><el-input disabled v-model="id" size="small"></el-input></el-col>
+    </el-row>
+        <el-row class="row">
+        <el-col :span="5"><p style="font-size: 16px;"><el-icon size="20"><User /></el-icon></p></el-col>
+        <el-col :span="15"><el-input v-model="username" size="small"></el-input></el-col>
+    </el-row>
+    <el-row class="row">
+        <el-col :span="5"><p style="font-size: 16px;"><el-icon size="20"><Message /></el-icon></p></el-col>
+        <el-col :span="15"><el-input v-model="email" size="small"></el-input></el-col>
+    </el-row>
+    <el-row class="row">
+        <el-col :span="5"><p style="font-size: 16px;"><el-icon size="20"><Iphone /></el-icon></p></el-col>
+        <el-col :span="15"><el-input v-model="phone" size="small"></el-input></el-col>
+    </el-row>
+    <el-row class="row">
+        <el-col :span="5"><p style="font-size: 16px;"><el-icon size="20"><Timer /></el-icon></p></el-col>
+        <el-col :span="15"><el-input disabled v-model="time" size="small"></el-input></el-col>
+    </el-row>
     <template #footer>
       <span class="dialog-footer">
         <el-button @click="dialogVisible = false">取消</el-button>
@@ -88,6 +107,11 @@ export default {
 </script>
 
 <style scoped>
+.row {
+    margin-bottom: 15px;
+    font-size: 16px;
+    margin-left: 80px;
+}
 .detail {
     background-image: linear-gradient(to right, #5d9cec, #8eb5f3);
     border-radius: 30px;
@@ -103,13 +127,20 @@ export default {
 }
 
 .info2 {
+    color:gray;
     margin-left: 70px;
     height: 60vh;
-    font-size: 16px;
-    font-weight: 190;
+    font-size: 17px;
+    font-weight: 340;
+    display: flex; 
+    align-items: begin;
+    justify-items: center;
+    flex-direction: column;
 }
 .info3 {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #E6E6E6;
 }
 
 .show_detail {
@@ -123,6 +154,7 @@ export default {
 }
 .icon {
     color: white;
+    border:none !important;
 }
 .text {
     color: white;

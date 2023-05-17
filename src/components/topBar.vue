@@ -1,6 +1,7 @@
 <template>
     <div class="top-bar">
       <div>
+        <img class="icon" src="@/assets/icon.png">
         <img class="logo" src="@/assets/logo.png">
       </div>
       <div class="spacer"></div>
@@ -55,6 +56,6 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
     @import url(@/assets/css/nav_bar.css);
 </style>

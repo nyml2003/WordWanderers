@@ -21,11 +21,20 @@
   
   /* Style the logo */
   .logo {
-    width: 200px;
-    height:auto
+    width: 180px;
+    height:auto;
+    padding-bottom: 3.5px;
+    padding-left: 5px;
   }
   
-
+  .icon {
+    width: 40px;
+    height:auto;
+    padding-top:3px;
+    padding-bottom: 3px;
+    padding-right: 5px;
+    border-right: 1.5px solid rgb(232, 231, 231);
+  }
   /* Style the navigation links */
   .nav-links a {
     margin-left: 20px;

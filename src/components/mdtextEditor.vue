@@ -1,5 +1,5 @@
 <template>
-    <VueMarkdownEditor v-model="content" style="height: 3000px;" />
+    <VueMarkdownEditor v-model="content" style="height: 300px;" />
 </template>
   
   <script>

@@ -9,7 +9,8 @@ form {
 }
 
 .login {
-    margin-top: 130px;
+    margin-top: 15vh;
+    margin-bottom: 25vh;
     display: flex;
     align-items: center;
     justify-content: center;

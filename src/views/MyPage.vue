@@ -1,12 +1,13 @@
 <template>
   <el-container>
+    <!--左侧导航栏-->
     <el-aside>
-        <!--左侧导航栏-->
         <navleft @writeBlog="changeToWriteBlog" @personalInfo="changeToPersonalInfo" @myHome="changeToMyHome"></navleft>
     </el-aside >
+    <!--主内容栏-->
     <el-main>
-      <writeBlog v-if="pos==1"></writeBlog>
-      <personalInfo v-if="pos==2"></personalInfo>
+      <writeBlog v-if="pos==1"></writeBlog><!--显示写博客界面-->
+      <personalInfo v-if="pos==2"></personalInfo><!--显示个人信息界面-->
     </el-main>
   </el-container>
 </template>

@@ -10,7 +10,7 @@
         <el-form-item label="摘要">
           <el-input 
             :rows="3" type="textarea" placeholder="请输入摘要，不超过100字" 
-            v-model="blog.desciption"></el-input>
+            v-model="blog.description"></el-input>
         </el-form-item>
 
         <el-form-item label="分类">

@@ -11,6 +11,7 @@
     </el-main>
   </el-container>
 </template>
+
 <script>
 import navleft from "@/components/nav-left.vue"
 import writeBlog from "@/components/writeBlog.vue"
@@ -40,6 +41,7 @@ export default {
   },
   }
 </script>
+
 <style>
 .el-container{
     height: 100vh;

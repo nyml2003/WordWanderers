@@ -16,6 +16,10 @@ export default createStore({
     setUser(state, user) {
       state.user = user
       state.isLogin = true
+    },
+    Register(state,responce){
+      state.user.id=responce.id
+      state.user.user_name=responce.user_name
     }
   },
   actions: {

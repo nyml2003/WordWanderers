@@ -75,35 +75,22 @@
   </el-dialog>
 </template>
 
-<script>
-import { ElMessage } from 'element-plus';
-export default {
-    data() {
-    return {
-        username: '测试用户',
-        blognum: '101',
-        dialogVisible: false,
-        email: '12315999@qq.com',
-        id: 10010,
-        phone: 18900033021,
-        time: '2021-03-08',
-    };
-    },
-    methods: {
-        showBlogNum() {
-            ElMessage('当前发表博客数：'+this.blognum)
-        },
-        showLike() {
-            ElMessage('当前收获点赞数：'+this.blognum)
-        },
-        showComment() {
-            ElMessage('当前收获评论数：'+this.blognum)
-        },
-        showView() {
-            ElMessage('当前浏览总数：'+this.blognum)
-        }
-    },
-};
+<script setup>
+import { ref } from 'vue'
+import {ElMessage} from 'element-plus'
+const dialogVisible = ref(false);
+const showBlogNum=()=>{
+    ElMessage('当前发表博客数：'+100)
+}
+const showLike=()=>{
+    ElMessage('当前收获点赞数：'+100)
+}
+const showComment=()=>{
+    ElMessage('当前收获评论数：'+100)
+}
+const showView=()=>{
+    ElMessage('当前浏览总数：'+100)
+}
 </script>
 
 <style scoped>

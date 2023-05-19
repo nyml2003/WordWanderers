@@ -1,5 +1,4 @@
 <template>
-    <div>
       <div class="box">
         <div class="block">
         <el-timeline>
@@ -18,7 +17,6 @@
         </el-timeline>
         </div>
       </div>
-    </div>
   </template>
   
 <script setup>

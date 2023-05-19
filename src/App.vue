@@ -1,11 +1,20 @@
 <template>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <topBar></topBar>
-  <router-view/>
-  <div class="foot">
-    <img class="logo" src="@/assets/logo.png">
-  </div>
+  <el-container>
+<el-header>
+    <topBar/>
+  </el-header>
+  <el-main style="justify-content: center; align-items: center; width: 100%;height:100%">
+    <router-view ></router-view>
+  </el-main>
+  
+  <el-footer style="display: flex; justify-content: center; align-items: center; width: fit-content;">
+    <img class="logo" src="@/assets/logo.png" >
+  </el-footer>
+
+  </el-container>
+  
 </template>
 
 <script>

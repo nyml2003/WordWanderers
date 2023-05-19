@@ -11,34 +11,21 @@
   </el-container>
 </template>
 
-<script>
+<script setup>
 import navleft from "@/components/nav-left.vue"
 import writeBlog from "@/components/writeBlog.vue"
 import personalInfo from "@/components/personalInfo.vue"
-export default {
-  name: 'MyPage',
-  data() {
-    return {
-      pos:2,
-    };
-  },
-  components: {
-      navleft,
-      writeBlog,
-      personalInfo,
-  },
-  methods: {
-    changeToWriteBlog() {
-      this.pos = 1;
-    },
-    changeToPersonalInfo() {
-      this.pos = 2;
-    },
-    changeToMyHome() {
-      this.pos = 3;
-    }
-  },
-  }
+import { ref } from 'vue'
+const pos=ref(1)
+const changeToWriteBlog=()=>{
+  pos.value=1
+}
+const changeToPersonalInfo=()=>{
+  pos.value=2
+}
+const changeToMyHome=()=>{
+  pos.value=3
+}
 </script>
 
 <style>

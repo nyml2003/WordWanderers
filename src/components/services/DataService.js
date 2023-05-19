@@ -25,5 +25,5 @@ export default {
   },
   SelectBlog(id){
     return apiClient.post('/SB',{id:id});
-  },
+  }
 };

@@ -6,12 +6,14 @@
         <el-button type="primary" round @click="dialogVisible = true"><el-icon><Edit /></el-icon></el-button>
     </div>
     </el-row>
+    <!--基本信息显示区-->
     <div class="info2">
         <el-row class="info3"><el-icon size="25" style="margin-right: 15px;"><PriceTag /></el-icon>{{ id }}</el-row>
         <el-row class="info3"><el-icon size="25" style="margin-right: 15px;"><Message /></el-icon>{{ email }}</el-row>
         <el-row class="info3"><el-icon size="25" style="margin-right: 15px;"><Iphone /></el-icon>{{ phone }}</el-row>
         <el-row class="info3" style="border: none;"><el-icon size="25" style="margin-right: 15px;"><Timer /></el-icon>{{ time }}</el-row>
     </div>
+    <!--数据信息显示区-->
     <el-row class="detail">
         <div class="show_detail" @click="showBlogNum">
             <div class="icon"><el-icon size="40"><ChatRound /></el-icon></div>
@@ -42,7 +44,7 @@
             </div>
         </div>
     </el-row>
-
+    <!--修改信息对话框-->
     <el-dialog v-model="dialogVisible" title="修改信息" width="500px">
     <el-row class="row">
         <el-col :span="5"><p style="font-size: 16px;"><el-icon size="20"><PriceTag /></el-icon></p></el-col>
@@ -76,21 +78,32 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import {ElMessage} from 'element-plus'
+import { ref } from 'vue';
+import { ElMessage } from 'element-plus';
+const username = ref('测试用户');
+const blognum = ref('101');
 const dialogVisible = ref(false);
-const showBlogNum=()=>{
-    ElMessage('当前发表博客数：'+100)
-}
-const showLike=()=>{
-    ElMessage('当前收获点赞数：'+100)
-}
-const showComment=()=>{
-    ElMessage('当前收获评论数：'+100)
-}
-const showView=()=>{
-    ElMessage('当前浏览总数：'+100)
-}
+const email = ref('12315999@qq.com');
+const id = ref(10010);
+const phone = ref(18900033021);
+const time = ref('2021-03-08');
+
+const showBlogNum = () => {
+    ElMessage('当前发表博客数：' + blognum.value);
+};
+
+const showLike = () => {
+    ElMessage('当前收获点赞数：' + blognum.value);
+};
+
+const showComment = () => {
+    ElMessage('当前收获评论数：' + blognum.value);
+};
+
+const showView = () => {
+    ElMessage('当前浏览总数：' + blognum.value);
+};
+
 </script>
 
 <style scoped>

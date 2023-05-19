@@ -9,7 +9,7 @@
     <router-view ></router-view>
   </el-main>
   
-  <el-footer style="display: flex; justify-content: center; align-items: center; width: fit-content;">
+  <el-footer style="display: flex; justify-content: center; align-items: center; ">
     <img class="logo" src="@/assets/logo.png" >
   </el-footer>
 

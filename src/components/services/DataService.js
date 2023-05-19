@@ -25,5 +25,8 @@ export default {
   },
   SelectBlog(id){
     return apiClient.post('/SB',{id:id});
+  },
+  select_profile(id){
+    return apiClient.post('/SP',{user_id:id});
   }
 };

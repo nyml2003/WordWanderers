@@ -1,6 +1,6 @@
 <template>
     <el-row class="info">
-        <el-avatar :size="50">{{ username.substring(0,2) }}</el-avatar>
+        <el-avatar :size="50" :src="avatar"></el-avatar>
         <p>{{ username }}</p>
     <div class="button-wrapper">
         <el-button type="primary" round @click="dialogVisible = true"><el-icon><Edit /></el-icon></el-button>
@@ -26,21 +26,21 @@
             <div class="icon"><el-icon size="40"><Pointer /></el-icon></div>
             <div class="text">
                 <span class="line1">收获点赞</span>
-                <span class="line2">{{ blognum }}</span>
+                <span class="line2">{{ like }}</span>
             </div>
         </div>
         <div class="show_detail" @click="showComment">
             <div class="icon"><el-icon size="40"><Message /></el-icon></div>
             <div class="text">
                 <span class="line1">收获评论</span>
-                <span class="line2">{{ blognum }}</span>
+                <span class="line2">{{ comments_number }}</span>
             </div>
         </div>
         <div class="show_detail" style="border-right: none;" @click="showView">
             <div class="icon"><el-icon size="40"><View /></el-icon></div>
             <div class="text">
                 <span class="line1">总浏览量</span>
-                <span class="line2">{{ blognum }}</span>
+                <span class="line2">{{ views_number }}</span>
             </div>
         </div>
     </el-row>
@@ -78,30 +78,51 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { ElMessage } from 'element-plus';
-const username = ref('测试用户');
-const blognum = ref('101');
-const dialogVisible = ref(false);
-const email = ref('12315999@qq.com');
-const id = ref(10010);
-const phone = ref(18900033021);
-const time = ref('2021-03-08');
-
+import { onMounted, ref,computed } from 'vue'
+import { ElMessage } from 'element-plus'
+import {useStore} from 'vuex'
+import DataService from './services/DataService'
+const state=computed(()=>useStore().state)
+const username = ref(state.value.user.user_name)
+const blognum = ref('101')
+const avatar=computed(()=>state.value.user.avatar)
+const dialogVisible = ref(false)
+const email = ref('12315999@qq.com')
+const id = ref(state.value.user.id)
+const phone = ref(18900033021)
+const time = ref('2021-03-08')
+const like=ref(100)
+const comments_number=ref(114514)
+const views_number=ref(1919810)
+const getPersonalInfo = async() => {
+    const responce=await DataService.select_profile(id.value)
+    blognum.value=responce.data.blogs_number
+    email.value=responce.data.email
+    phone.value=responce.data.phone_number
+    time.value=responce.data.created_time
+    like.value=responce.data.likes_number
+    comments_number.value=responce.data.comments_number
+    views_number.value=responce.data.views_number
+};
+// const formatDatetime = (key) => {
+//     var json_date = new Date(key).toJSON();
+//     return new Date(new Date(json_date) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+// }
+onMounted(getPersonalInfo)
 const showBlogNum = () => {
     ElMessage('当前发表博客数：' + blognum.value);
 };
 
 const showLike = () => {
-    ElMessage('当前收获点赞数：' + blognum.value);
+    ElMessage('当前收获点赞数：' + like.value);
 };
 
 const showComment = () => {
-    ElMessage('当前收获评论数：' + blognum.value);
+    ElMessage('当前收获评论数：' + comments_number.value);
 };
 
 const showView = () => {
-    ElMessage('当前浏览总数：' + blognum.value);
+    ElMessage('当前浏览总数：' + views_number.value);
 };
 
 </script>

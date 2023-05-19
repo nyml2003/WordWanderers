@@ -1,36 +1,39 @@
 <template>
-    <el-menu>
-            <el-submenu class="nav-l">
-              <el-menu-item @click="$emit('WriteBlog')">
+    <el-menu @select="handleSelect">
+              <el-menu-item index="1">
                 <el-icon><Edit /></el-icon>
                 <span>写博客</span>
               </el-menu-item>
-              <el-menu-item @click="$emit('PersonalInfo')">
+              <el-menu-item index="2">
                 <el-icon><UserFilled /></el-icon>
                 <span>个人信息</span>
               </el-menu-item>
-              <el-menu-item @click="$emit('MyHome')">
+              <el-menu-item index="3">
                 <el-icon><View /></el-icon>
                 <span>我的主页</span>
               </el-menu-item>
-            </el-submenu>
     </el-menu>
   </template>
-  <script>
-  export default {
-    components: {  },
-    name: "CommonAside",
-    data() {
-      return {
-        //展开 还是折叠
-        isCollapse: false,
-        menu: [
-          {index:"1",path: "/", name: "home", label: "首页", icon: "s-home"},
-        ]
-      };
-    },
+<script setup>
+
+import { defineEmits } from 'vue'
+
+const emit = defineEmits(['writeBlog', 'personalInfo', 'myHome']);
+
+const handleSelect = (index) => {
+  switch (index) {
+    case '1':
+      emit('writeBlog');
+      break;
+    case '2':
+      emit('personalInfo');
+      break;
+    case '3':
+      emit('myHome');
+      break;
   }
-  </script>
+}
+</script>
 
 <style>
 .func {

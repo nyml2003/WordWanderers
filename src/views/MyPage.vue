@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import navleft from "@/components/nav-left.vue"
+import navleft from "@/components/navLeft.vue"
 import writeBlog from "@/components/writeBlog.vue"
 import personalInfo from "@/components/personalInfo.vue"
 export default {

@@ -83,6 +83,7 @@
 
 .el-card:hover{
 margin-left: 20px;
+color: rgb(52, 98, 246);
 }
 
 </style>

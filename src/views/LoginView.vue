@@ -1,5 +1,5 @@
 <template>
-  <el-row style="align-items: center; justify-content: center; height:100%">
+  <el-row style="align-items: center; justify-content: center; height:100%;">
   <el-form
     label-position="top"
     label-width="80px"
@@ -13,7 +13,9 @@
         <el-input  v-model="password" placeholder="Password"></el-input>
       </el-form-item>
       <el-form-item >
-        <el-button type="primary" @click="submit">登录</el-button>
+        <el-col :span="24" style="text-align: center;">
+          <el-button type="primary submit" @click="submit">→</el-button>
+        </el-col>
       </el-form-item>
    <div class="login_register">
       <p>Don't have a Word Wanderers account yet?</p>

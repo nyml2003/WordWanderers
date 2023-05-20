@@ -1,5 +1,8 @@
 <template>
-    <el-row class="info">
+    <el-row v-loading='loading'
+          :element-loading-spinner="svg"
+          element-loading-svg-view-box="-10, -10, 50, 50"
+         class="info">
         <el-avatar :size="50" :src="avatar"></el-avatar>
         <p>{{ username }}</p>
     <div class="button-wrapper">
@@ -7,14 +10,21 @@
     </div>
     </el-row>
     <!--基本信息显示区-->
-    <div class="info2">
+    <div v-loading='loading'
+          element-loading-text="Loading..."
+          :element-loading-spinner="svg"
+          element-loading-svg-view-box="-10, -10, 50, 50"
+           class="info2">
         <el-row class="info3"><el-icon size="25" style="margin-right: 15px;"><PriceTag /></el-icon>{{ id }}</el-row>
         <el-row class="info3"><el-icon size="25" style="margin-right: 15px;"><Message /></el-icon>{{ email }}</el-row>
         <el-row class="info3"><el-icon size="25" style="margin-right: 15px;"><Iphone /></el-icon>{{ phone }}</el-row>
         <el-row class="info3" style="border: none;"><el-icon size="25" style="margin-right: 15px;"><Timer /></el-icon>{{ time }}</el-row>
     </div>
     <!--数据信息显示区-->
-    <el-row class="detail">
+    <el-row v-loading='loading'
+          :element-loading-spinner="svg"
+          element-loading-svg-view-box="-10, -10, 50, 50"
+           class="detail">
         <div class="show_detail" @click="showBlogNum">
             <div class="icon"><el-icon size="40"><ChatRound /></el-icon></div>
             <div class="text">
@@ -93,8 +103,20 @@ const phone = ref(18900033021)
 const time = ref('2021-03-08')
 const like=ref(100)
 const comments_number=ref(114514)
-const views_number=ref(1919810)
-const getPersonalInfo = async() => {
+const views_number = ref(1919810)
+const loading = ref(true)
+const svg = `
+        <path class="path" d="
+          M 30 15
+          L 28 17
+          M 25.61 25.61
+          A 15 15, 0, 0, 1, 15 30
+          A 15 15, 0, 1, 1, 27.99 7.5
+          L 15 15
+        " style="stroke-width: 4px; fill: rgba(0, 0, 0, 0)"/>
+      `
+const getPersonalInfo = async () => {
+    loading.value = true
     const responce=await DataService.select_profile(id.value)
     blognum.value=responce.data.blogs_number
     email.value=responce.data.email
@@ -102,7 +124,8 @@ const getPersonalInfo = async() => {
     time.value=responce.data.created_time
     like.value=responce.data.likes_number
     comments_number.value=responce.data.comments_number
-    views_number.value=responce.data.views_number
+    views_number.value = responce.data.views_number
+    loading.value = false
 };
 // const formatDatetime = (key) => {
 //     var json_date = new Date(key).toJSON();

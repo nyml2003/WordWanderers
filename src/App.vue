@@ -6,7 +6,7 @@
       <topBar/>
     </el-header>
     <el-main style="justify-content: center; align-items: center; width: 100%;height:100%">
-      <router-view ></router-view>
+      <router-view :key=$route.fullPath></router-view>
     </el-main>
 
     <el-footer class="foot">

@@ -18,7 +18,7 @@ export default {
     return apiClient.get('/SAB');
   },
   Select_Conditional_Blogs(title){
-    return apiClient.post('/SCB',title);
+    return apiClient.post('/SCB',{title:title});
   },
   isInputRight(name,password){
     return apiClient.post('/Login_Judge',{name,password});

@@ -59,14 +59,14 @@ const handleSelect = (index) => {
   width: 160px !important;
 }
 
-.nav-l .el-menu-item{
+.el-menu-item{
     background-color: white;
     color: gray;
     border-radius: 10px;
     padding-left: 27px !important;
     font-size: 16px;
 }
-.nav-l .el-menu-item:hover{
+.el-menu-item:hover{
     border: none;
     color: black;
     background-color: #E6E6E6;

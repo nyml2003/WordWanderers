@@ -23,7 +23,9 @@
         <el-input v-model="confirmpassword" placeholder="请确认您的密码"></el-input>
       </el-form-item>
       <el-form-item >
-        <el-button type="primary" @click="submit(form)" >登录</el-button>
+        <el-col :span="24" style="text-align: center;">
+          <el-button round plain type="info" size="large" @click="submit(form)" >注册</el-button>
+        </el-col>
       </el-form-item>
     </el-form>
   </el-row>

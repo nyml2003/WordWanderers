@@ -94,16 +94,16 @@ import {useStore} from 'vuex'
 import DataService from './services/DataService'
 const state=computed(()=>useStore().state)
 const username = ref(state.value.user.user_name)
-const blognum = ref('101')
 const avatar=computed(()=>state.value.user.avatar)
 const dialogVisible = ref(false)
-const email = ref('12315999@qq.com')
+const email = ref('')
 const id = ref(state.value.user.id)
-const phone = ref(18900033021)
-const time = ref('2021-03-08')
-const like=ref(100)
-const comments_number=ref(114514)
-const views_number = ref(1919810)
+const phone = ref()
+const time = ref('')
+const like = ref(0)
+const blognum = ref(0)
+const comments_number=ref(0)
+const views_number = ref(0)
 const loading = ref(true)
 const svg = `
         <path class="path" d="
@@ -116,8 +116,13 @@ const svg = `
         " style="stroke-width: 4px; fill: rgba(0, 0, 0, 0)"/>
       `
 const getPersonalInfo = async () => {
+    if (id.value === null) {
+        ElMessage.error('您还没有登录，请先登录！');
+        return;
+    }
+    else {
     loading.value = true
-    const responce=await DataService.select_profile(id.value)
+    const responce = await DataService.select_profile(id.value)
     blognum.value=responce.data.blogs_number
     email.value=responce.data.email
     phone.value=responce.data.phone_number
@@ -126,6 +131,7 @@ const getPersonalInfo = async () => {
     comments_number.value=responce.data.comments_number
     views_number.value = responce.data.views_number
     loading.value = false
+    }
 };
 // const formatDatetime = (key) => {
 //     var json_date = new Date(key).toJSON();

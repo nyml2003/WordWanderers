@@ -18,13 +18,13 @@ export default {
     return apiClient.get('/SAB');
   },
   Select_Conditional_Blogs(title){
-    return apiClient.post('/SCB',title);
+    return apiClient.post('/SCB',{title:title});
   },
   isInputRight(name,password){
     return apiClient.post('/Login_Judge',{name,password});
   },
-  SelectBlog(id){
-    return apiClient.post('/SB',{id:id});
+  SelectBlog(user_id,blog_id){
+    return apiClient.post('/SB',{user_id:user_id,blog_id:blog_id});
   },
   select_profile(id){
     return apiClient.post('/SP',{user_id:id});
@@ -40,5 +40,17 @@ export default {
   },
   insertBlog(user_id,type_name,description,title,content){
     return apiClient.post('/IB',{user_id:user_id,type_name:type_name,description:description,title:title,content:content});
+  },
+  UpdatePhone(user_id,phone){
+    return apiClient.post('/UP',{user_id:user_id,phone_number:phone});
+  },
+  UpdateAvatar(user_id,avatar){
+    return apiClient.post('/UA',{user_id:user_id,avatar:avatar});
+  },
+  UpdateEmail(user_id,email){
+    return apiClient.post('/UE',{user_id:user_id,email:email});
+  },
+  UpdateName(user_id,user_name){
+    return apiClient.post('/UN',{user_id:user_id,user_name:user_name});
   }
 };

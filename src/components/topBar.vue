@@ -8,11 +8,11 @@
       <div class="nav-links">
         <router-link to="/">Home</router-link>
         <router-link to="/about">About</router-link>
-        <router-link to="/blog">Blog</router-link>
+        <router-link :to="{name:'blog',query:{content:''}}">Blog</router-link>
       </div>
       <div class="search-box">
         <i class="fa fa-search"></i>
-        <input type="text" placeholder="Search..." v-bind="content" @keydown="searchByKey" v-on:click="searchByblur">
+        <input type="text" placeholder="Search..." v-model="content" @blur="searchByblur">
       </div>
       <div class="user" >
         <el-avatar :size="30" v-if="isLogin" :src="avatar" @click="handleAvatarClick"></el-avatar>
@@ -37,16 +37,13 @@ const handleAvatarClick=()=>{
         router.push({path:'/userLogin'})
     }
 }
-const searchByKey=(event)=>{
-  if(event.keyCode===13){
-    search()
-  }
-}
+
 const searchByblur=()=>{
     search()
 }
 const search=()=>{
-    router.push({path:'/blog',params:{content:content.value}})
+    router.push({name:'blog',query:{content:content.value}})
+    content.value=''
 }
 </script>
 

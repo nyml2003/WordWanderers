@@ -27,6 +27,8 @@
   import { ElTimeline, ElTimelineItem, ElCard, ElMessage } from 'element-plus';
   import { ref, onMounted } from 'vue';
   import DataService from '@/components/services/DataService';
+  import { useRoute } from 'vue-router';
+  const title=ref(useRoute().query.content)
   const blogs = ref([]);
   const loading = ref(true)
   const svg = `
@@ -42,7 +44,13 @@
   onMounted(async () => {
     try {
       loading.value = true;
-      const response = await DataService.Select_All_Blogs();
+      console.log(title);
+      let response;
+      if (title.value===""){
+        response = await DataService.Select_All_Blogs();
+      }else{
+        response = await DataService.Select_Conditional_Blogs(title.value);
+      }
       console.log(response);
       loading.value = false;
       blogs.value = response.data;

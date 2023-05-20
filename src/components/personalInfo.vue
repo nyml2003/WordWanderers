@@ -225,7 +225,7 @@ const showView = () => {
 }
 .info p {
     margin-left: 20px;
-    font-size: 17px;
+    font-size: 25px;
     font-weight: 190;
 }
 

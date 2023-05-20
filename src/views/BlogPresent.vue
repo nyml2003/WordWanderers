@@ -165,9 +165,10 @@ const handleCommentClick = ()=> {
 
 const loadBlog = async () => {
     loading.value = true;
-    const response = await DataService.SelectBlog(blogId.value);
+    const response = await DataService.SelectBlog(user_id.value,blogId.value);
     loading.value = false;
     blog.value=response.data;
+    isActive.value=blog.value.isActive
 }
 
 onMounted(loadBlog );

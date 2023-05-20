@@ -43,6 +43,7 @@ const searchByblur=()=>{
 }
 const search=()=>{
     router.push({name:'blog',query:{content:content.value}})
+    content.value=''
 }
 </script>
 

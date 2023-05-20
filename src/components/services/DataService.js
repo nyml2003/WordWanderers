@@ -23,8 +23,8 @@ export default {
   isInputRight(name,password){
     return apiClient.post('/Login_Judge',{name,password});
   },
-  SelectBlog(id){
-    return apiClient.post('/SB',{id:id});
+  SelectBlog(user_id,blog_id){
+    return apiClient.post('/SB',{user_id:user_id,blog_id:blog_id});
   },
   select_profile(id){
     return apiClient.post('/SP',{user_id:id});

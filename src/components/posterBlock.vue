@@ -10,7 +10,7 @@
             <router-link to="/userLogin" class = 'white'>Login Now →</router-link>
         </div>
         <div v-else class="poster_box">
-            <router-link to="/blog" class = 'white'>Explore Blogs →</router-link>
+            <router-link :to="{name:'blog',query:{content:''}}" class = 'white'>Explore Blogs →</router-link>
         </div>
     </div>
     <div style="text-align: center;">

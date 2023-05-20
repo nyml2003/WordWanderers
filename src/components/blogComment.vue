@@ -1,8 +1,8 @@
 <template>
     <div class="comment_group">
         <div class="info">
-            <el-avatar :size="30">{{username.substring(0,2)}}</el-avatar>
-            <p style="margin-left: 10px;">{{ username }}</p>
+            <el-avatar :size="30" :src="props.avatar">{{props.user_name.substring(0,2)}}</el-avatar>
+            <p style="margin-left: 10px;">{{ props.user_name }}</p>
         </div>
         <div class="comment_main">
             <p>{{ props.message }}</p>
@@ -12,13 +12,19 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
 import { defineProps } from 'vue';
 
-const username = ref('user1');
 
 const props = defineProps({
   message: {
+    type: String,
+    required: true,
+  },
+  user_name: {
+    type: String,
+    required: true,
+  },
+  avatar: {
     type: String,
     required: true,
   },

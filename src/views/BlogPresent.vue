@@ -9,10 +9,10 @@
           <div class="card-header">
             <div class="card-header1">
               <div>
-                <h2>{{ blog.title }}{{ blog.id}}</h2>
+                <h2>{{ blog.title }}</h2>
                 <p class="author" style="margin-top: 10px;">
-                <el-avatar :size="30">{{ blog.user_name }}</el-avatar>
-                {{ blog.user_name }}{{ blog.id }}
+                <el-avatar :size="30" :src="blog.avatar"></el-avatar>
+                {{ blog.user_name }}
                 </p>
               </div>
               <div class="info">
@@ -58,7 +58,7 @@
             :infinite-scroll-disabled="disabled"
           >
           <div v-for="(comment,id) in blog.comments" :key="id">
-            <blogComment :message="comment"></blogComment>
+            <blogComment :message="comment.content" :user_name="comment.user_name" :avatar="comment.avatar"></blogComment>
           </div>
           </ul>
         </div>

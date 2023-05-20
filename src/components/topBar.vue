@@ -12,7 +12,7 @@
       </div>
       <div class="search-box">
         <i class="fa fa-search"></i>
-        <input type="text" placeholder="Search...">
+        <input type="text" placeholder="Search..." v-bind="content" @keydown="searchByKey" v-on:click="searchByblur">
       </div>
       <div class="user" >
         <el-avatar :size="30" v-if="isLogin" :src="avatar" @click="handleAvatarClick"></el-avatar>
@@ -22,10 +22,11 @@
 </template>
 
 <script setup>
-import { computed} from 'vue';
+import { computed,ref} from 'vue';
 import {useStore} from 'vuex'
 import { useRouter } from 'vue-router';
 const router = useRouter();
+const content = ref('')
 const state=computed(()=>useStore().state)
 const isLogin=computed(()=>state.value.isLogin)
 const avatar=computed(()=>state.value.user.avatar)
@@ -35,6 +36,17 @@ const handleAvatarClick=()=>{
     }else{
         router.push({path:'/userLogin'})
     }
+}
+const searchByKey=(event)=>{
+  if(event.keyCode===13){
+    search()
+  }
+}
+const searchByblur=()=>{
+    search()
+}
+const search=()=>{
+    router.push({path:'/blog',params:{content:content.value}})
 }
 </script>
 

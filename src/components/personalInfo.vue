@@ -87,12 +87,12 @@
     </template>
   </el-dialog>
   <!-- 退出登录 -->
-  <el-dialog v-model="isExit" title="再次确定是否要退出" width="500px">
+  <el-dialog v-model="isExit" title="再次确定是否要退出登录" width="500px">
     <template #footer>
       <span class="dialog-footer">
         <el-button @click="isExit = false">取消</el-button>
         <el-button type="primary" @click="logout">
-          提交
+            确定
         </el-button>
       </span>
     </template>
@@ -121,6 +121,10 @@ const logout=()=>{
     ElMessage.success('退出成功！')
     router.push({path:'/'})
 }
+// const updateInfo = () => {
+//     dialogVisible.value = false
+//     ElMessage.success('修改成功！')
+// };
 const email = ref('')
 const id = ref(state.value.user.id)
 const phone = ref()

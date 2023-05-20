@@ -11,7 +11,7 @@
                 <template #header>
                 <div class="card-header">
                     <h3 style="margin-bottom: 6px;">{{ blog.title }}</h3>
-                    <p><el-avatar :size="30" style="margin-right: 10px;">{{ blog.user_name.substring(0,2) }}</el-avatar>{{ blog.user_name }}</p>
+                    <p><el-avatar :size="30" style="margin-right: 10px;" :src="blog.avatar"></el-avatar>{{ blog.user_name }}</p>
                 </div>
                 </template>
                 <p style="font-size: 15px; color:grey" >{{ blog.description }}</p>

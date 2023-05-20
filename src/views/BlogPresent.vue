@@ -1,7 +1,10 @@
 <template>
   <div class="page">
     <div class="box-card">
-      <el-card>
+      <el-card v-loading='loading'
+          element-loading-text="Loading..."
+          :element-loading-spinner="svg"
+          element-loading-svg-view-box="-10, -10, 50, 50">
         <template #header>
           <div class="card-header">
             <div class="card-header1">
@@ -24,22 +27,25 @@
       </el-card>
     </div> 
     <div class="box-card">
-      <el-card>
+      <el-card v-loading='loading'
+          element-loading-text="Loading..."
+          :element-loading-spinner="svg"
+          element-loading-svg-view-box="-10, -10, 50, 50">
         <template #header>
           <div class="card-header">
             <h3>
               <div class="comment">
                 <span><el-icon><ChatRound /></el-icon></span>
                 <span>
-                  <el-button :disabled="user_id===null" v-if="isActive"  text round @click="toggleActive" style="background-color: rgb(90,156,248);color:white;width:55px">
+                  <el-button  v-if="isActive"  text round @click="toggleActive" style="background-color: rgb(90,156,248);color:white;width:55px">
                     <el-icon style="font-size:20px;color: white;"><CaretTop /></el-icon>
-                    {{ blog.like }}
+                    {{ blog.like }}     
                   </el-button>
-                  <el-button :disabled="user_id===null" v-else text round @click="toggleActive" style="border: 1.5px solid rgb(203, 201, 201);color: rgb(165, 162, 162);width:55px">
+                  <el-button  v-else text round @click="toggleActive" style="border: 1.5px solid rgb(203, 201, 201);color: rgb(165, 162, 162);width:55px">
                     <el-icon style="font-size:20px;color: rgb(165, 162, 162);"><CaretTop /></el-icon>
                     {{ blog.like }}
                   </el-button>
-                  <el-button :disabled="user_id===null" text round style="border: 1.5px solid rgb(203, 201, 201);color: rgb(165, 162, 162);width:55px" @click="dialogVisible = true">
+                  <el-button  text round style="border: 1.5px solid rgb(203, 201, 201);color: rgb(165, 162, 162);width:55px" @click="handleCommentClick">
                     评论 </el-button>
                 </span>
               </div>
@@ -48,17 +54,13 @@
         </template>
         <div class="infinite-list-wrapper" style="overflow: auto">
           <ul
-            v-infinite-scroll="load"
             class="list" 
             :infinite-scroll-disabled="disabled"
           >
-
           <div v-for="(comment,id) in blog.comments" :key="id">
             <blogComment :message="comment"></blogComment>
           </div>
           </ul>
-          <p v-if="loading">Loading...</p>
-          <p v-if="noMore">No more</p>
         </div>
       </el-card>
     </div>
@@ -83,6 +85,7 @@
 </template>
 
 <script setup>
+import { ElMessage } from 'element-plus';
 import { computed, ref,onMounted } from 'vue';
 import { useRoute } from 'vue-router'
 import DataService from '@/components/services/DataService'
@@ -95,11 +98,19 @@ const blogId = ref(route.params.blogId)
 const blog=ref({})
 const isActive = ref(false)
 const dialogVisible = ref(false)
-const count = ref(10)
 const loading = ref(false)
-const noMore = computed(() => count.value >= 20)
-const disabled = computed(() => loading.value || noMore.value)
+const disabled = computed(() => loading.value )
 const newComment = ref('')
+const svg = `
+        <path class="path" d="
+          M 30 15
+          L 28 17
+          M 25.61 25.61
+          A 15 15, 0, 0, 1, 15 30
+          A 15 15, 0, 1, 1, 27.99 7.5
+          L 15 15
+        " style="stroke-width: 4px; fill: rgba(0, 0, 0, 0)"/>
+      `
 console.log([user_id.value,state.value])
 //评论功能
 const submitComment = async() => {
@@ -117,33 +128,45 @@ const submitComment = async() => {
 }
 //点赞功能
 const toggleActive = () => {
-  if (isActive.value === true) {
+  if (user_id.value === null) {
+    ElMessage({
+          type: 'error',
+          message: '您还没有登录，请先登录！',
+        });
+  }
+  else {
+    if (isActive.value === true) {
     //点赞数+1，请同步到后端
     isActive.value = false;
     blog.value.like -= 1;
-  }
-  else {
-    //点赞数-1，请同步到后端
-    isActive.value = true;
-    blog.value.like += 1;
+    }
+    else {
+      //点赞数-1，请同步到后端
+      isActive.value = true;
+      blog.value.like += 1;
+    }
   }
 };
-const load = () => {
-  loading.value = true
-  setTimeout(() => {
-    count.value += 2
-    loading.value = false
-  }, 2000)
+
+const handleCommentClick = ()=> {
+      if (user_id.value === null) {
+        ElMessage({
+          type: 'error',
+          message: '您还没有登录，请先登录！',
+        });
+      } else {
+        dialogVisible.value = true;
+      }
 }
-const loadBlog=async () => {
+
+const loadBlog = async () => {
+    loading.value = true;
     const response = await DataService.SelectBlog(blogId.value);
+    loading.value = false;
     blog.value=response.data;
-  }
+}
+
 onMounted(loadBlog );
-
-
-blog.value.like = 100;
-
 
 </script>
 

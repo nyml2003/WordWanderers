@@ -1,6 +1,6 @@
 <template>
   <div class="block text-center">
-    <el-carousel height="87vh" >
+    <el-carousel height="83vh" >
       <el-carousel-item class="show" v-for="item in this.poster" :key="item">
         <div>
           <h1 class="small justify-center" text="2xl">{{ item.job }}</h1>

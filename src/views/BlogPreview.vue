@@ -1,5 +1,8 @@
 <template>
-      <div class="box">
+      <div v-loading="loading"
+          element-loading-text="Loading..."
+          :element-loading-spinner="svg"
+          element-loading-svg-view-box="-10, -10, 50, 50" class="box">
         <div class="block">
         <el-timeline>
           <el-timeline-item v-for="(blog,id) in blogs" :key="blog.id" :index="id" :timestamp="blog.created_time" placement="top" >
@@ -20,13 +23,33 @@
   </template>
   
 <script setup>
-  import { ElTimeline, ElTimelineItem, ElCard } from 'element-plus';
-  import { ref,onMounted } from 'vue';
+  import { ElTimeline, ElTimelineItem, ElCard, ElMessage } from 'element-plus';
+  import { ref, onMounted } from 'vue';
   import DataService from '@/components/services/DataService';
-  const blogs=ref([]);
-  onMounted( async () => {
-    const response = await DataService.Select_All_Blogs();
-    blogs.value=response.data;
+  const blogs = ref([]);
+  const loading = ref(true)
+  const svg = `
+          <path class="path" d="
+            M 30 15
+            L 28 17
+            M 25.61 25.61
+            A 15 15, 0, 0, 1, 15 30
+            A 15 15, 0, 1, 1, 27.99 7.5
+            L 15 15
+          " style="stroke-width: 4px; fill: rgba(0, 0, 0, 0)"/>
+        `
+  onMounted(async () => {
+    try {
+      loading.value = true;
+      const response = await DataService.Select_All_Blogs();
+      console.log(response);
+      loading.value = false;
+      blogs.value = response.data;
+    } catch (error) {      
+      loading.value = false;
+      ElMessage.error('Failed to fetch data. Please try again.');
+      console.error(error);
+    }
   });
 </script>
 

@@ -88,13 +88,11 @@
   </el-dialog>
   <!-- 退出登录 -->
   <el-dialog v-model="isExit" title="您是否要退出登录？" width="500px">
-  <el-dialog v-model="isExit" title="再次确定是否要退出登录" width="500px">
     <template #footer>
       <span class="dialog-footer">
         <el-button @click="isExit = false">取消</el-button>
         <el-button type="primary" @click="logout">
           退出
-            确定
         </el-button>
       </span>
     </template>

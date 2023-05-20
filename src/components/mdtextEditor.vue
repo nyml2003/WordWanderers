@@ -13,6 +13,7 @@
   VueMarkdownEditor.use(vuepressTheme, {
     Prism,
   });
+
   
   export default defineComponent({
     name: 'MdtextEditor',

@@ -14,7 +14,7 @@
         </el-form-item>
 
         <el-form-item label="分类">
-          <el-radio-group v-model="blog.type" size="middle">
+          <el-radio-group v-model="blog.type" size="default">
             <el-radio-button label="原创" />
             <el-radio-button label="翻译" />
             <el-radio-button label="转载" />
@@ -22,7 +22,7 @@
         </el-form-item>
 
         <el-form-item label="内容">
-          <mdtextEditor ref="editor" v-model="blog.content"></mdtextEditor>
+          <v-md-editor ref="editor" v-model="blog.content"></v-md-editor>
         </el-form-item>
 
         <el-form-item style="margin-left: 44%;">
@@ -35,7 +35,6 @@
   
 <script setup>
   import { ref } from 'vue';
-  import mdtextEditor from './mdtextEditor.vue';
   
   const blog = ref({
     title: "",

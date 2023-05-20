@@ -1,5 +1,5 @@
 <template>
-  <el-row style="align-items: center; justify-content: center; height:100%;">
+  <el-row style="align-items: center; justify-content: center; height:100% width:100%">
   <el-form
     label-position="top"
     label-width="80px"

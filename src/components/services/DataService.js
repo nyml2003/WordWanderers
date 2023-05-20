@@ -25,5 +25,14 @@ export default {
   },
   SelectBlog(id){
     return apiClient.post('/SB',{id:id});
+  },
+  select_profile(id){
+    return apiClient.post('/SP',{user_id:id});
+  },
+  insertComment(user_id,blog_id,content){
+    return apiClient.post('/IC',{user_id:user_id,blog_id:blog_id,content:content});
+  },
+  Register(user_name,password,email){
+    return apiClient.post('/Register_Judge',{user_name:user_name,password:password,email:email});
   }
 };

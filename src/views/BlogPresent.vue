@@ -31,15 +31,15 @@
               <div class="comment">
                 <span><el-icon><ChatRound /></el-icon></span>
                 <span>
-                  <el-button v-if="isActive"  text round @click="toggleActive" style="background-color: rgb(90,156,248);color:white;width:55px">
+                  <el-button :disabled="user_id===null" v-if="isActive"  text round @click="toggleActive" style="background-color: rgb(90,156,248);color:white;width:55px">
                     <el-icon style="font-size:20px;color: white;"><CaretTop /></el-icon>
                     {{ blog.like }}
                   </el-button>
-                  <el-button v-else text round @click="toggleActive" style="border: 1.5px solid rgb(203, 201, 201);color: rgb(165, 162, 162);width:55px">
+                  <el-button :disabled="user_id===null" v-else text round @click="toggleActive" style="border: 1.5px solid rgb(203, 201, 201);color: rgb(165, 162, 162);width:55px">
                     <el-icon style="font-size:20px;color: rgb(165, 162, 162);"><CaretTop /></el-icon>
                     {{ blog.like }}
                   </el-button>
-                  <el-button text round style="border: 1.5px solid rgb(203, 201, 201);color: rgb(165, 162, 162);width:55px" @click="dialogVisible = true">
+                  <el-button :disabled="user_id===null" text round style="border: 1.5px solid rgb(203, 201, 201);color: rgb(165, 162, 162);width:55px" @click="dialogVisible = true">
                     评论 </el-button>
                 </span>
               </div>
@@ -83,11 +83,13 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue';
+import { computed, ref,onMounted } from 'vue';
 import { useRoute } from 'vue-router'
 import DataService from '@/components/services/DataService'
 import blogComment from '@/components/blogComment.vue'
-import { onMounted } from 'vue';
+import { useStore } from 'vuex';
+const state=computed(()=>useStore().state)
+const user_id=computed(()=>state.value.user.id)
 const route=useRoute()
 const blogId = ref(route.params.blogId)
 const blog=ref({})
@@ -98,13 +100,15 @@ const loading = ref(false)
 const noMore = computed(() => count.value >= 20)
 const disabled = computed(() => loading.value || noMore.value)
 const newComment = ref('')
-
+console.log([user_id.value,state.value])
 //评论功能
-const submitComment = () => {
+const submitComment = async() => {
+  console.log(state)
   //把内容存储到后端，下面这句用于测试 逻辑写好后请删除
   console.log('已经提交评论:', newComment.value);
-
-
+  const responce= await DataService.insertComment(user_id.value,blogId.value,newComment.value);
+  console.log(responce.data)
+  loadBlog()
   //请只改这上面
   //清空评论内容(防止下次点开时会有)
   newComment.value = '';
@@ -131,11 +135,11 @@ const load = () => {
     loading.value = false
   }, 2000)
 }
-
-onMounted( async () => {
+const loadBlog=async () => {
     const response = await DataService.SelectBlog(blogId.value);
     blog.value=response.data;
-  });
+  }
+onMounted(loadBlog );
 
 
 blog.value.like = 100;

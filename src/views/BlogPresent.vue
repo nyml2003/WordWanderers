@@ -135,6 +135,7 @@ const toggleActive = () => {
         });
   }
   else {
+    submitLikes()
     if (isActive.value === true) {
     //点赞数+1，请同步到后端
     isActive.value = false;
@@ -147,7 +148,10 @@ const toggleActive = () => {
     }
   }
 };
-
+const submitLikes=async()=>{
+  const responce= await DataService.Update_Likes(user_id.value,blogId.value,!isActive.value);
+  console.log(responce.data)
+}
 const handleCommentClick = ()=> {
       if (user_id.value === null) {
         ElMessage({

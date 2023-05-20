@@ -7,6 +7,7 @@
         <p>{{ username }}</p>
     <div class="button-wrapper">
         <el-button type="primary" round @click="dialogVisible = true"><el-icon><Edit /></el-icon></el-button>
+        <el-button type="primary" round @click="isExit = true"><el-icon><Close /></el-icon></el-button>
     </div>
     </el-row>
     <!--基本信息显示区-->
@@ -85,17 +86,41 @@
       </span>
     </template>
   </el-dialog>
+  <!-- 退出登录 -->
+  <el-dialog v-model="isExit" title="再次确定是否要退出" width="500px">
+    <template #footer>
+      <span class="dialog-footer">
+        <el-button @click="isExit = false">取消</el-button>
+        <el-button type="primary" @click="logout">
+          提交
+        </el-button>
+      </span>
+    </template>
+  </el-dialog>
 </template>
 
 <script setup>
 import { onMounted, ref,computed } from 'vue'
 import { ElMessage } from 'element-plus'
 import {useStore} from 'vuex'
+import { useRouter } from 'vue-router'
 import DataService from './services/DataService'
 const state=computed(()=>useStore().state)
 const username = ref(state.value.user.user_name)
 const avatar=computed(()=>state.value.user.avatar)
 const dialogVisible = ref(false)
+const router = useRouter();
+const isExit = ref(false)
+const logout=()=>{
+    isExit.value = false
+    console.log(state)
+    state.value.isLogin=false
+    state.value.user.avatar=null
+    state.value.user.user_name=null
+    state.value.user.id=null
+    ElMessage.success('退出成功！')
+    router.push({path:'/'})
+}
 const email = ref('')
 const id = ref(state.value.user.id)
 const phone = ref()

@@ -34,5 +34,11 @@ export default {
   },
   Register(user_name,password,email){
     return apiClient.post('/Register_Judge',{user_name:user_name,password:password,email:email});
+  },
+  Update_Likes(user_id,blog_id,user_like){
+    return apiClient.post('/UL',{user_id:user_id,blog_id:blog_id,user_like:user_like});
+  },
+  insertBlog(user_id,type_name,description,title,content){
+    return apiClient.post('/IB',{user_id:user_id,type_name:type_name,description:description,title:title,content:content});
   }
 };

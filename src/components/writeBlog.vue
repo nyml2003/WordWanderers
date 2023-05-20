@@ -35,7 +35,11 @@
   
 <script setup>
   import { ref } from 'vue';
-  
+  import DataService from '@/components/services/DataService'
+  import { useStore } from 'vuex';
+  import { useRouter } from 'vue-router';
+const router = useRouter()
+const user_id=useStore().state.user.id
   const blog = ref({
     title: "",
     description: "",
@@ -44,10 +48,19 @@
   });
   
   const submitBlog = () => {
+    console.log(blog.value)
+    submit()
+    console.log("submit ok")
+    router.push({path:'/blog'})
     // 将博客内容转换为Markdown格式存储
     // 提交博客数据到后台
     // ...
   };
+  const submit=async()=>{
+    const responce=await DataService.insertBlog(user_id,blog.value.type,blog.value.description,blog.value.title,blog.value.content)
+    console.log(responce.data)
+  }
+
 </script>
 
   

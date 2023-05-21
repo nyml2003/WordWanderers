@@ -1,7 +1,7 @@
 <template>
     <div class="comment_group">
         <div class="info">
-            <el-avatar :size="30" :src="props.avatar">{{props.user_name.substring(0,2)}}</el-avatar>
+            <el-avatar :size="30" :src="props.avatar">{{ props.user_name.substring(0,2) }}</el-avatar>
             <p style="margin-left: 10px;">{{ props.user_name }}</p>
         </div>
         <div class="comment_main">

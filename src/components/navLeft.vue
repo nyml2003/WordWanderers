@@ -47,28 +47,36 @@ const handleSelect = (index) => {
 }
 .el-menu {
     border: none !important;
+    margin-left: 0px;
 }
 .el-aside {
   border-right: 2px solid #E6E6E6;
-  padding-top: 20px;
+  padding-top: 0px;
   background-color: white;
   color: #333;
   text-align: center;
-  line-height: 200px;
+  line-height: 100px;
   height: 90%;
-  width: 160px !important;
+  width: 170px !important;
 }
 
 .el-menu-item{
+    height: 35px !important;
+    margin-top: 5px;
+    margin-right: 20px;
     background-color: white;
-    color: gray;
-    border-radius: 10px;
-    padding-left: 27px !important;
+    color: gray !important;
+    border-radius: 5px;
+    padding-left: 15px !important;
     font-size: 16px;
+    font-weight: 300;
 }
 .el-menu-item:hover{
     border: none;
-    color: black;
-    background-color: #E6E6E6;
+    background-color: #E6E6E6 !important;
+}
+.el-menu-item.is-active {
+  background-color: rgb(89,154,245) !important;
+  color: white !important;
 }
 </style>

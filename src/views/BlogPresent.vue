@@ -17,7 +17,7 @@
               </div>
               <div class="info">
                   <span><el-icon><ArrowUpBold /></el-icon>  {{ blog.like }}</span>
-                  <span><el-icon><ChatRound /></el-icon>  {{ blog.comment }}</span>
+                  <span><el-icon><ChatRound /></el-icon>  {{ commentNumber }}</span>
                   <span style="border: none;"><el-icon><View /></el-icon>  {{ blog.view }}</span>
               </div>
             </div>
@@ -101,6 +101,7 @@ const dialogVisible = ref(false)
 const loading = ref(false)
 const disabled = computed(() => loading.value )
 const newComment = ref('')
+const commentNumber=ref(0)
 const svg = `
         <path class="path" d="
           M 30 15
@@ -168,6 +169,7 @@ const loadBlog = async () => {
     const response = await DataService.SelectBlog(user_id.value,blogId.value);
     loading.value = false;
     blog.value=response.data;
+    commentNumber.value=blog.value.comments.length
     isActive.value=blog.value.isActive
 }
 

@@ -51,7 +51,7 @@ const user_id=useStore().state.user.id
     console.log(blog.value)
     submit()
     console.log("submit ok")
-    router.push({path:'/blog'})
+    router.push({path:'/blog',query:{content:''}})
     // 将博客内容转换为Markdown格式存储
     // 提交博客数据到后台
     // ...

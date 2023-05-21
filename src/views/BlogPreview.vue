@@ -4,10 +4,10 @@
           :element-loading-spinner="svg"
           element-loading-svg-view-box="-10, -10, 50, 50" class="box">
         <div class="block">
-        <el-timeline>
-          <el-timeline-item v-for="(blog,id) in blogs" :key="blog.id" :index="id" :timestamp="blog.created_time" placement="top" >
+        <el-timeline :reverse="reverse">
+          <el-timeline-item v-for="(blog,id) in blogs" :key="id" :index="id" :timestamp="blog.created_time" placement="top" >
             <!--点击标题，则传回当前博文的blog参数 并要求执行selectBlog函数-->
-            <el-card class="box-card"  @click="this.$router.push({name:'BlogPresent',params: {blogId:blog.id}})">
+            <el-card class="box-card"  @click="router.push({name:'BlogPresent',params: {blogId:blog.id}})">
                 <template #header>
                 <div class="card-header">
                     <h3 style="margin-bottom: 6px;">{{ blog.title }}</h3>
@@ -28,8 +28,11 @@
   import { ref, onMounted } from 'vue';
   import DataService from '@/components/services/DataService';
   import { useRoute } from 'vue-router';
+  import { useRouter } from 'vue-router';
+  const router = useRouter();
   const title=ref(useRoute().query.content)
   const blogs = ref([]);
+  const reverse=ref(true)
   const loading = ref(true)
   const svg = `
           <path class="path" d="

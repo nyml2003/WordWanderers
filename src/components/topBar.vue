@@ -15,7 +15,7 @@
         <input type="text" placeholder="Search..." v-model="content" @blur="searchByblur">
       </div>
       <div class="user" >
-        <el-avatar :size="30" v-if="isLogin" :src="avatar" @click="handleAvatarClick"></el-avatar>
+        <el-avatar :size="30" v-if="isLogin" :src="avatar" @click="handleAvatarClick">{{ username }}</el-avatar>
         <el-avatar :size="30" v-else icon="UserFilled"  @click="handleAvatarClick"/>
       </div>
     </div>

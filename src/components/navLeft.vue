@@ -2,15 +2,15 @@
     <el-menu @select="handleSelect">
               <el-menu-item index="1">
                 <el-icon><Edit /></el-icon>
-                <span>写博客</span>
+                <span>Write Blog</span>
               </el-menu-item>
               <el-menu-item index="2">
                 <el-icon><UserFilled /></el-icon>
-                <span>个人信息</span>
+                <span>Info</span>
               </el-menu-item>
               <el-menu-item index="3">
                 <el-icon><View /></el-icon>
-                <span>我的主页</span>
+                <span>My Blogs</span>
               </el-menu-item>
     </el-menu>
   </template>
@@ -68,8 +68,8 @@ const handleSelect = (index) => {
     color: gray !important;
     border-radius: 5px;
     padding-left: 15px !important;
-    font-size: 16px;
-    font-weight: 300;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 18px;
 }
 .el-menu-item:hover{
     border: none;

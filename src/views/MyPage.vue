@@ -8,6 +8,7 @@
     <el-main>
       <writeBlog v-if="pos==1"></writeBlog><!--显示写博客界面-->
       <personalInfo v-if="pos==2"></personalInfo><!--显示个人信息界面-->
+      <myBlogPage v-if="pos==3"></myBlogPage>
     </el-main>
   </el-container>
 </template>
@@ -17,6 +18,7 @@ import { ref } from 'vue'
 import navleft from "@/components/navLeft.vue"
 import writeBlog from "@/components/writeBlog.vue"
 import personalInfo from "@/components/personalInfo.vue"
+import myBlogPage from "@/components/myBlogPage.vue"
 const pos=ref(2)
 const changeToWriteBlog = () => {
   pos.value = 1;

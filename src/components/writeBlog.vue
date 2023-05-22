@@ -22,7 +22,7 @@
         </el-form-item>
 
         <el-form-item label="内容">
-          <v-md-editor ref="editor" v-model="blog.content"></v-md-editor>
+          <v-md-editor ref="editor" v-model="blog.content" height="450px"></v-md-editor>
         </el-form-item>
 
         <el-form-item style="margin-left: 44%;">

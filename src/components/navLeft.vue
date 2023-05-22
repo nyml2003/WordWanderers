@@ -69,7 +69,8 @@ const handleSelect = (index) => {
     border-radius: 5px;
     padding-left: 15px !important;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: 300;
 }
 .el-menu-item:hover{
     border: none;

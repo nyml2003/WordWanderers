@@ -8,12 +8,28 @@
         <template #header>
           <div class="card-header">
             <div class="card-header1">
-              <div>
-                <h2>{{ blog.title }}</h2>
-                <p class="author" style="margin-top: 10px;">
-                <el-avatar :size="30" :src="blog.avatar"></el-avatar>
-                {{ blog.user_name }}
-                </p>
+              <div class="title">
+                <el-row class="row">
+                  <h2>{{ blog.title }}</h2>
+                </el-row>
+                <el-row style="margin-top: 5px;">
+                  <el-text>分类：</el-text>
+                  <el-radio-group v-model="blog.type" size="small">
+                    <el-radio-button disabled label="原创" />
+                    <el-radio-button disabled label="翻译" />
+                    <el-radio-button disabled label="转载" />
+                  </el-radio-group>
+                </el-row>
+                <el-row class="row">
+                  <el-avatar :size="40" :src="blog.avatar">{{ blog.user_name }}</el-avatar>
+                  <el-text class="author">
+                    {{ blog.user_name }}
+                  </el-text>
+                  <div>
+                    <el-button circle  text style="margin-left: 15px;" type="primary"><el-icon><Edit /></el-icon></el-button>
+                  <el-button circle  text type="danger"><el-icon><Delete/></el-icon></el-button>
+                  </div>
+                </el-row>
               </div>
               <div class="info">
                   <span><el-icon><ArrowUpBold /></el-icon>  {{ blog.like }}</span>
@@ -170,7 +186,8 @@ const loadBlog = async () => {
     loading.value = false;
     blog.value=response.data;
     commentNumber.value=blog.value.comments.length
-    isActive.value=blog.value.isActive
+    isActive.value = blog.value.isActive
+    console.log(blog.value)
 }
 
 onMounted(loadBlog );
@@ -178,6 +195,14 @@ onMounted(loadBlog );
 </script>
 
 <style scoped>
+.title{
+  max-width: 80%;
+}
+.row{
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
 .page {
   display: flex;
   flex-direction: column; /* 设置为竖排 */
@@ -186,15 +211,16 @@ onMounted(loadBlog );
 }
 
 .box-card {
-  max-width: 900px;
-  width:90%;
+  max-width: 100%;
+  width:900px;
   margin-top: 20px;
   margin-left: 5%;
   margin-right: 5%;
   margin-bottom: 10px;
 }
 .card-header{
-  margin-bottom: -10px;
+  margin-top: -10px;
+  margin-bottom: 0px;
 }
 .card-header1{
   display: flex;
@@ -202,12 +228,13 @@ onMounted(loadBlog );
   justify-content: space-between;
 }
 .author {
+  margin-left: 5px;
   font-size: 20px;
   color: grey;
 }
 .info {
-  margin-top: 0px;
-  margin-bottom: 0px;
+  margin-top: 12px;
+  margin-bottom: 5px;
   display: flex;
   flex-direction: column;
   align-items:end;
@@ -215,7 +242,6 @@ onMounted(loadBlog );
 }
 .comment{
   margin-top: -10px;
-  display: flex;
   display: flex;
   align-items: center; /* 设置垂直居中对齐 */
   justify-content: space-between; /* 将子元素分别排列在容器的最左边和最右边 */

@@ -1,17 +1,21 @@
 <template>
-      <div v-loading="loading"
+  <div class="page">
+    <div v-loading="loading"
           element-loading-text="Loading..."
           :element-loading-spinner="svg"
           element-loading-svg-view-box="-10, -10, 50, 50" class="box">
         <div class="block">
-        <el-timeline :reverse="reverse">
-          <el-timeline-item v-for="(blog,id) in blogs" :key="id" :index="id" :timestamp="blog.created_time" placement="top" >
+        <el-timeline>
+          <el-timeline-item v-for="(blog,id) in blogs.reverse()" :key="id" :index="id" :timestamp="blog.created_time" placement="top" >
             <!--点击标题，则传回当前博文的blog参数 并要求执行selectBlog函数-->
             <el-card class="box-card"  @click="router.push({name:'BlogPresent',params: {blogId:blog.id}})">
                 <template #header>
                 <div class="card-header">
-                    <h3 style="margin-bottom: 6px;">{{ blog.title }}</h3>
-                    <p><el-avatar :size="30" style="margin-right: 10px;" :src="blog.avatar"></el-avatar>{{ blog.user_name }}</p>
+                    <h3 style="margin-top: px;">{{ blog.title }}</h3>
+                    <el-row class="user">
+                      <el-avatar :size="40" style="margin-left:-10px; margin-right: 10px;" :src="blog.avatar"></el-avatar>
+                      <p style="font-size: 17px; color: rgb(144, 150, 155);">{{ blog.user_name }}</p>
+                    </el-row>
                 </div>
                 </template>
                 <p style="font-size: 15px; color:grey" >{{ blog.description }}</p>
@@ -20,6 +24,8 @@
         </el-timeline>
         </div>
       </div>
+    </div>
+      
   </template>
   
 
@@ -66,10 +72,20 @@
 </script>
 
 <style scoped>
+.user {
+  display: flex;
+  align-items: center;
+}
+.page {
+  display: flex;
+  flex-direction: column; /* 设置为竖排 */
+  justify-content:center;/* 在垂直方向上居中对齐 */
+  align-items: center; /* 在水平方向上居中对齐 */
+}
 .box {
     margin-top: 20px;
-    margin-left: 10%;
-    margin-right: 10%;
+    width: 900px;
+    max-width: 100%;
 }
 .block{
     margin:10px,80px,10px,80px;
@@ -85,7 +101,15 @@
 
 .el-card:hover{
 margin-left: 20px;
-color: rgb(52, 98, 246);
+}
+.card-header {
+  margin-top: 0px;
+  margin-bottom: -10px;
+  font-size: 19px;
+}
+
+.card-header h3:hover{
+  color: rgb(65, 160, 255);
 }
 
 </style>

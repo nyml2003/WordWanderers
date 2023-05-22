@@ -6,8 +6,8 @@
         <el-avatar :size="50" :src="avatar"></el-avatar>
         <p>{{ username }}</p>
     <div class="button-wrapper">
-        <el-button type="primary" round @click="updateInfoDialog"><el-icon><Edit /></el-icon></el-button>
-        <el-button type="primary" round @click="isExit = true"><el-icon><Close /></el-icon></el-button>
+        <el-button type="primary" circle @click="updateInfoDialog"><el-icon><Edit /></el-icon></el-button>
+        <el-button type="primary" circle @click="isExit = true"><el-icon><Close /></el-icon></el-button>
     </div>
     </el-row>
     <!--基本信息显示区-->

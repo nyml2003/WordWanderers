@@ -38,7 +38,6 @@
   const router = useRouter();
   const title=ref(useRoute().query.content)
   const blogs = ref([]);
-  const reverse=ref(true)
   const loading = ref(true)
   const svg = `
           <path class="path" d="

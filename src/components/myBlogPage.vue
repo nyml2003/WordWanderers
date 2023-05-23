@@ -5,9 +5,9 @@
         element-loading-svg-view-box="-10, -10, 50, 50" class="box">
 
       <div class="block">
-      <el-timeline :reverse="reverse">
+      <el-timeline >
 
-        <el-timeline-item timestamp="2023-5-20" placement="top" >
+        <!-- <el-timeline-item timestamp="2023-5-20" placement="top" >
           <el-card class="box-card">
               <template #header>
               <div class="card-header">
@@ -17,9 +17,9 @@
               </template>
               <p style="font-size: 15px; color:grey" >12332131</p>
           </el-card>
-        </el-timeline-item>
+        </el-timeline-item> -->
 
-        <el-timeline-item v-for="(blog,id) in blogs" :key="id" :index="id" :timestamp="blog.created_time" placement="top" >
+        <el-timeline-item v-for="(blog,id) in blogs.reverse()" :key="id" :index="id" :timestamp="blog.created_time" placement="top" >
           <!--点击标题，则传回当前博文的blog参数 并要求执行selectBlog函数-->
           <el-card class="box-card"  @click="router.push({name:'BlogPresent',params: {blogId:blog.id}})">
               <template #header>
@@ -43,12 +43,12 @@
 import { ElTimeline, ElTimelineItem, ElCard, ElMessage } from 'element-plus';
 import { ref, onMounted } from 'vue';
 import DataService from '@/components/services/DataService';
-import { useRoute } from 'vue-router';
 import { useRouter } from 'vue-router';
+import {useStore} from 'vuex'
 const router = useRouter();
-const title=ref(useRoute().query.content)
+const store = useStore();
+const id=ref(store.state.user.id)
 const blogs = ref([]);
-const reverse=ref(true)
 const loading = ref(true)
 const svg = `
         <path class="path" d="
@@ -63,14 +63,8 @@ const svg = `
 onMounted(async () => {
   try {
     loading.value = true;
-    console.log(title);
-    let response;
-    if (title.value===""){
-      response = await DataService.Select_All_Blogs();
-    }else{
-      response = await DataService.Select_Conditional_Blogs(title.value);
-    }
-    console.log(response);
+    let response = await DataService.search_my_blogs(id.value);
+    console.log(response.data)
     loading.value = false;
     blogs.value = response.data;
   } catch (error) {      

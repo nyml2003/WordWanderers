@@ -14,11 +14,7 @@
                 </el-row>
                 <el-row style="margin-top: 5px;">
                   <el-text>分类：</el-text>
-                  <el-radio-group v-model="blog.type_name" size="small">
-                    <el-radio-button disabled label="原创" />
-                    <el-radio-button disabled label="翻译" />
-                    <el-radio-button disabled label="转载" />
-                  </el-radio-group>
+                  <el-tag effect="plain"><el-icon><Flag /></el-icon> {{ blog.type_name }}</el-tag>
                 </el-row>
                 <el-row class="row">
                   <el-avatar :size="40" :src="blog.avatar">{{ blog.user_name }}</el-avatar>

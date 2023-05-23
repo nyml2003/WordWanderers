@@ -55,5 +55,20 @@ export default {
   },
   search_my_blogs(user_id){
     return apiClient.post('/SMB',{user_id:user_id});
+  },
+  Update_blog_Content(blog_id,user_id,content){
+    return apiClient.post('/UBC',{blog_id:blog_id,user_id:user_id,content:content});
+  },
+  Update_blog_Title(blog_id,user_id,title){
+    return apiClient.post('/UBTitle',{blog_id:blog_id,user_id:user_id,title:title});
+  },
+  Update_blog_Type(blog_id,user_id,type_name){
+    return apiClient.post('/UBType',{blog_id:blog_id,user_id:user_id,type_name:type_name});
+  },
+  Update_blog_Description(blog_id,user_id,description){
+    return apiClient.post('/UBD',{blog_id:blog_id,user_id:user_id,description:description});
+  },
+  delete_blog(blog_id,user_id){
+    return apiClient.post('/DB',{blog_id:blog_id,user_id:user_id});
   }
 };

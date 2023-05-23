@@ -34,32 +34,80 @@
   </template>
   
 <script setup>
-  import { ref } from 'vue';
   import DataService from '@/components/services/DataService'
-  import { useStore } from 'vuex';
-  import { useRouter } from 'vue-router';
-const router = useRouter()
-const user_id=useStore().state.user.id
-const blog = ref({
-    title: "",
-    description: "",
-    content:  "",
-    type: "原创",
-  });
-  
+  import { ref } from 'vue';
+  import { defineProps } from 'vue';
+const params = defineProps({
+  blog_id:{
+    type:Number,
+    default:-1
+  },
+  user_id:{
+    type:Number,
+    required:true
+  },
+  title:{
+    type:String,
+    default:''
+  },
+  description:{
+    type:String,
+    default:''
+  },
+  content:{
+    type:String,
+    default:''
+  },
+  type:{
+    type:String,
+    default:'原创'
+  },
+  onClose: Function
+})
+const blog=ref({
+  title:params.title,
+  description:params.description,
+  content:params.content,
+  type:params.type
+})
   const submitBlog = () => {
     console.log(blog.value)
     submit()
     console.log("submit ok")
-    router.push({path:'/blog',query:{content:''}})
+    // if (params.blog_id === -1) {
+    //   router.push({path:'/blog',query:{content:''}})
+    // }else{
+    //   router.push({name:'BlogPresent',params: {blogId:params.blog_id}})
+    // }
+    params.onClose()
     // 将博客内容转换为Markdown格式存储
     // 提交博客数据到后台
     // ...
   };
-  const submit=async()=>{
-    const responce=await DataService.insertBlog(user_id,blog.value.type,blog.value.description,blog.value.title,blog.value.content)
+const submit = async () => {
+  if (params.blog_id === -1) {
+    const responce=await DataService.insertBlog(params.user_id,blog.value.type,blog.value.description,blog.value.title,blog.value.content)
     console.log(responce.data)
+  } else {
+    if (blog.value.content !== params.content) {
+      const responce = await DataService.Update_blog_Content(params.blog_id, params.user_id, blog.value.content)
+      console.log(responce.data)
+    }
+    if (blog.value.title !== params.title) {
+      const responce = await DataService.Update_blog_Title(params.blog_id, params.user_id, blog.value.title)
+      console.log(responce.data)
+    }
+    if (blog.value.description !== params.description) {
+      const responce = await DataService.Update_blog_Description(params.blog_id, params.user_id, blog.value.description)
+      console.log(responce.data)
+    }
+    if (blog.value.type !== params.type) {
+      const responce = await DataService.Update_blog_Type(params.blog_id, params.user_id, blog.value.type)
+      console.log(responce.data)
+    }
   }
+
+}
 
 </script>
 

@@ -1,5 +1,7 @@
 <template>
-    <el-menu @select="handleSelect">
+    <el-menu @select="handleSelect"
+    :default-active="props.pos"
+    >
               <el-menu-item index="1">
                 <el-icon><Edit /></el-icon>
                 <span>Write Blog</span>
@@ -16,10 +18,15 @@
   </template>
 <script setup>
 
-import { defineEmits } from 'vue'
+import { defineEmits,defineProps } from 'vue'
 
 const emit = defineEmits(['writeBlog', 'personalInfo', 'myHome']);
-
+const props=defineProps({
+  pos:{
+    type:String,
+    default:'2'
+  }
+})
 const handleSelect = (index) => {
   switch (index) {
     case '1':

@@ -22,7 +22,7 @@
                     {{ blog.user_name }}
                   </el-text>
                   <!--编辑博文和删除博文-->
-                  <div>
+                  <div v-if="state.user.user_name === blog.user_name">
                     <el-button circle text style="margin-left: 15px;" type="primary"
                       @click="showEditBox = true">
                       <el-icon><Edit /></el-icon>
@@ -118,7 +118,7 @@
       title="编辑博文"
       width="90%"
   >
-      <writeBlog></writeBlog>
+      <writeBlog :blog_id="Number(blogId)" :user_id="user_id" :title="blog.title" :description="blog.description" :content="blog.content" :type="blog.type_name" :onClose=handleChildClose></writeBlog>
   </el-dialog>
 </template>
 
@@ -130,6 +130,9 @@ import DataService from '@/components/services/DataService'
 import blogComment from '@/components/blogComment.vue'
 import writeBlog from "@/components/writeBlog.vue"
 import { useStore } from 'vuex';
+import {useRouter} from 'vue-router'
+const router = useRouter();
+
 const state=computed(()=>useStore().state)
 const user_id=computed(()=>state.value.user.id)
 const route=useRoute()
@@ -167,6 +170,14 @@ const submitComment = async() => {
   newComment.value = '';
   //关闭对话框
   dialogVisible.value = false;
+}
+const handleChildClose = () => {
+  showEditBox.value = false;
+  setTimeout(() => {
+     loadBlog()
+  }, 500);
+ 
+  
 }
 //点赞功能
 const toggleActive = () => {
@@ -216,7 +227,11 @@ const loadBlog = async () => {
 }
 
 onMounted(loadBlog );
-
+const deleteBlog=async()=>{
+  const responce= await DataService.delete_blog(blogId.value,user_id.value);
+  console.log(responce.data)
+  router.push({name:"MyPage"})
+}
 </script>
 
 <style scoped>

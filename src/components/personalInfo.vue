@@ -59,7 +59,7 @@
     <el-dialog v-model="dialogVisible" title="修改信息" width="500px">
     <el-row class="row">
         <el-col :span="5"><p style="font-size: 16px;"><el-icon size="20"><Camera/> </el-icon></p></el-col>
-        <el-col :span="15"><el-input v-model="avatar" size="small"></el-input></el-col>
+        <el-col :span="15"><el-input v-model="initData.avatar" size="small"></el-input></el-col>
     </el-row>
     <el-row class="row">
         <el-col :span="5"><p style="font-size: 16px;"><el-icon size="20"><PriceTag /></el-icon></p></el-col>
@@ -67,15 +67,15 @@
     </el-row>
         <el-row class="row">
         <el-col :span="5"><p style="font-size: 16px;"><el-icon size="20"><User /></el-icon></p></el-col>
-        <el-col :span="15"><el-input v-model="username" size="small"></el-input></el-col>
+        <el-col :span="15"><el-input v-model="initData.username" size="small"></el-input></el-col>
     </el-row>
     <el-row class="row">
         <el-col :span="5"><p style="font-size: 16px;"><el-icon size="20"><Message /></el-icon></p></el-col>
-        <el-col :span="15"><el-input v-model="email" size="small"></el-input></el-col>
+        <el-col :span="15"><el-input v-model="initData.email" size="small"></el-input></el-col>
     </el-row>
     <el-row class="row">
         <el-col :span="5"><p style="font-size: 16px;"><el-icon size="20"><Iphone /></el-icon></p></el-col>
-        <el-col :span="15"><el-input v-model="phone" size="small"></el-input></el-col>
+        <el-col :span="15"><el-input v-model="initData.phone_number" size="small"></el-input></el-col>
     </el-row>
     <el-row class="row">
         <el-col :span="5"><p style="font-size: 16px;"><el-icon size="20"><Timer /></el-icon></p></el-col>
@@ -129,32 +129,33 @@ const logout=()=>{
 let initData={}
 const updateInfoDialog = () => {
     dialogVisible.value = true
-    initData={
-        id:id.value,
+    initData=ref({
         avatar:avatar.value,
         email:email.value,
         phone_number:phone.value,
-        created_time:time.value,
         username:username.value,
-    }
-    console.log(initData)
+    })
 };
 const updateInfo= async()=>{
     console.log(initData)
-    if(email.value!=initData.email){
+    if(email.value!=initData.value.email){
+        email.value=initData.value.email
       const responce= await DataService.UpdateEmail(id.value,email.value)
       console.log(responce.data)
     }
-    if (phone.value != initData.phone_number) {
+    if (phone.value != initData.value.phone_number) {
+        phone.value = initData.value.phone_number
         const responce = await DataService.UpdatePhone(id.value, phone.value)
         console.log(responce.data)
     }
-    if (username.value != initData.username) {
+    if (username.value != initData.value.username) {
+        username.value = initData.value.username
         const responce = await DataService.UpdateName(id.value, username.value)
         store.commit('setUser_name',username.value)
         console.log(responce.data)
     }
-    if (avatar.value != initData.avatar) {
+    if (avatar.value != initData.value.avatar) {
+        avatar.value = initData.value.avatar
         const responce = await DataService.UpdateAvatar(id.value, avatar.value)
         store.commit('setAvatar',avatar.value)
         console.log(responce.data)

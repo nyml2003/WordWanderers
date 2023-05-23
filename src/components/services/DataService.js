@@ -52,5 +52,8 @@ export default {
   },
   UpdateName(user_id,user_name){
     return apiClient.post('/UN',{user_id:user_id,user_name:user_name});
+  },
+  search_my_blogs(user_id){
+    return apiClient.post('/SMB',{user_id:user_id});
   }
 };

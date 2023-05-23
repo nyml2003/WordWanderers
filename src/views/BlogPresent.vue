@@ -14,7 +14,7 @@
                 </el-row>
                 <el-row style="margin-top: 5px;">
                   <el-text>分类：</el-text>
-                  <el-radio-group v-model="blog.type" size="small">
+                  <el-radio-group v-model="blog.type_name" size="small">
                     <el-radio-button disabled label="原创" />
                     <el-radio-button disabled label="翻译" />
                     <el-radio-button disabled label="转载" />

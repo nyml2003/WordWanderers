@@ -40,7 +40,7 @@
   import { useRouter } from 'vue-router';
 const router = useRouter()
 const user_id=useStore().state.user.id
-  const blog = ref({
+const blog = ref({
     title: "",
     description: "",
     content:  `---

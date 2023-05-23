@@ -25,9 +25,13 @@
                   <el-text class="author">
                     {{ blog.user_name }}
                   </el-text>
+                  <!--编辑博文和删除博文-->
                   <div>
-                    <el-button circle  text style="margin-left: 15px;" type="primary"><el-icon><Edit /></el-icon></el-button>
-                  <el-button circle  text type="danger"><el-icon><Delete/></el-icon></el-button>
+                    <el-button circle text style="margin-left: 15px;" type="primary"
+                      @click="showEditBox = true">
+                      <el-icon><Edit /></el-icon>
+                    </el-button>
+                    <el-button circle  text type="danger" @click="showDeleteBox = true"><el-icon><Delete/></el-icon></el-button>
                   </div>
                 </el-row>
               </div>
@@ -98,6 +102,28 @@
       </span>
     </template>
   </el-dialog>
+
+  <el-dialog
+      v-model="showDeleteBox"
+      title="提示"
+      width="350px"
+  >
+      <span>您确认要删除这篇博文吗？</span>
+      <template #footer>
+        <span class="dialog-footer">
+          <el-button @click="showDeleteBox = false">取消</el-button>
+          <el-button type="primary" @click="deleteBlog">删除</el-button>
+        </span>
+      </template>
+  </el-dialog>
+
+  <el-dialog
+      v-model="showEditBox"
+      title="编辑博文"
+      width="90%"
+  >
+      <writeBlog></writeBlog>
+  </el-dialog>
 </template>
 
 <script setup>
@@ -106,6 +132,7 @@ import { computed, ref,onMounted } from 'vue';
 import { useRoute } from 'vue-router'
 import DataService from '@/components/services/DataService'
 import blogComment from '@/components/blogComment.vue'
+import writeBlog from "@/components/writeBlog.vue"
 import { useStore } from 'vuex';
 const state=computed(()=>useStore().state)
 const user_id=computed(()=>state.value.user.id)
@@ -114,6 +141,8 @@ const blogId = ref(route.params.blogId)
 const blog=ref({})
 const isActive = ref(false)
 const dialogVisible = ref(false)
+const showDeleteBox = ref(false)
+const showEditBox = ref(false)
 const loading = ref(false)
 const disabled = computed(() => loading.value )
 const newComment = ref('')

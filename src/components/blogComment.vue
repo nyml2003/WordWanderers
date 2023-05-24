@@ -37,7 +37,7 @@ const props = defineProps({
 .comment_group {
     display: flex;
     flex-direction: column;
-    border-bottom: 1.5px solid gainsboro;
+    border-bottom: 2px solid #e3e3e3;
     margin-top: 5px;
     padding-bottom: 10px;
 }
@@ -47,8 +47,12 @@ const props = defineProps({
     flex-direction: row;
     align-items: center;
     justify-items: center;
+    font-weight: 600;
 }
 .comment_main {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: light;
+    margin-top: 8px;
     margin-left: 40px;
     text-align: start;
     font-size: 16px;

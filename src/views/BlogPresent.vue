@@ -15,6 +15,8 @@
                 <el-row style="margin-top: 5px;">
                   <el-text>分类：</el-text>
                   <el-tag effect="plain"><el-icon><Flag /></el-icon> {{ blog.type_name }}</el-tag>
+                  <el-text style="margin-left: 10px;">创建时间：</el-text>
+                  <el-tag type="info" effect="plain"><el-icon><Clock /></el-icon> {{ blog.created_time }}</el-tag>
                 </el-row>
                 <el-row class="row">
                   <el-avatar :size="40" :src="blog.avatar">{{ blog.user_name }}</el-avatar>
